@@ -1,9 +1,75 @@
 [gd_scene format=3 uid="uid://c5ec0vofsyn8o"]
 
-[node name="Control" type="Control" unique_id=187721183]
+[ext_resource type="Script" uid="uid://dbntljflhcho" path="res://interface.gd" id="1_xodjk"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6lq5x"]
+bg_color = Color(0.6969296, 0.5530413, 0.6138384, 1)
+
+[node name="Interface" type="Control" unique_id=187721183]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_xodjk")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1100711485]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = 10
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer" unique_id=1879583961]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_6lq5x")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/PanelContainer" unique_id=1151797977]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/PanelContainer/MarginContainer" unique_id=2106949180]
+layout_mode = 2
+tooltip_text = "
+"
+
+[node name="Label" type="Label" parent="VBoxContainer/PanelContainer/MarginContainer/HBoxContainer" unique_id=1074947588]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 21
+text = "Système Solaire:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control" type="PanelContainer" parent="VBoxContainer" unique_id=1809279799]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Control" unique_id=1556611309]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Control/VBoxContainer" unique_id=1739903140]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="VBoxContainer" parent="VBoxContainer/Control/VBoxContainer/MarginContainer" unique_id=2042034063]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/Control/VBoxContainer/MarginContainer/HBoxContainer" unique_id=295533836]
+layout_mode = 2
+text = "Echelle de temps :"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer/Control/VBoxContainer/MarginContainer/HBoxContainer" unique_id=983495447]
+layout_mode = 2
+
+[node name="HSlider" type="HSlider" parent="VBoxContainer/Control/VBoxContainer/MarginContainer/HBoxContainer" unique_id=1711873073]
+layout_mode = 2
+max_value = 10.0
+value = 5.0
