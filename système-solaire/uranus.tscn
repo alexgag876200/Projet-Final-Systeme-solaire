@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://ch8o4qugdjd42"]
+
+[ext_resource type="PackedScene" uid="uid://bj13x5vtxuu14" path="res://body_planète.tscn" id="1_8q3j1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e8pt5"]
+albedo_color = Color(0.6509804, 0.90588236, 0.8901961, 1)
+
+[node name="Uranus" unique_id=1213070534 instance=ExtResource("1_8q3j1")]
+
+[node name="RigidBody3D" parent="." index="0" unique_id=399557911]
+transform = Transform3D(1, 0, 0, 0, 0.9999025240093042, -0.01396218033914547, 0, 0.01396218033914547, 0.9999025240093042, 0, 0, 0)
+vitesse_rotation = -2570.0
+
+[node name="MeshInstance3D" parent="RigidBody3D" index="0" unique_id=1113201612]
+surface_material_override/0 = SubResource("StandardMaterial3D_e8pt5")

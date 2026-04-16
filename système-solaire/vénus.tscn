@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://b6g6uyx6o400v"]
+
+[ext_resource type="PackedScene" uid="uid://bj13x5vtxuu14" path="res://body_planète.tscn" id="1_bf3b6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8k6x7"]
+albedo_color = Color(0.93333334, 0.8235294, 0.5411765, 1)
+
+[node name="Vénus" unique_id=1213070534 instance=ExtResource("1_bf3b6")]
+
+[node name="RigidBody3D" parent="." index="0" unique_id=399557911]
+transform = Transform3D(1, 0, 0, 0, 0.9982398279237653, -0.05930637357596123, 0, 0.05930637357596123, 0.9982398279237653, 0, 0, 0)
+
+[node name="MeshInstance3D" parent="RigidBody3D" index="0" unique_id=1113201612]
+surface_material_override/0 = SubResource("StandardMaterial3D_8k6x7")

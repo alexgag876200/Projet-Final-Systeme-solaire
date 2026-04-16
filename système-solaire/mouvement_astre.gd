@@ -84,7 +84,7 @@ func acceleration(position_rellee: Vector3) -> Vector3:
 	var force: Vector3
 	for corps in autres_corps:
 		
-		var facteur = -G * masse_soleil / (corps.position_rellee.length()**3)
+		var facteur = -G * masse_soleil / (position_rellee.length()**3)
 		force = (position_rellee - centre_rotation.position) * facteur
 	return force
 func runge_kotta(temps_dernier_ecran):

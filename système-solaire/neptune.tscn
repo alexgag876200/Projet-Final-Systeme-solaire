@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://dd25o7aj73gsl"]
+
+[ext_resource type="PackedScene" uid="uid://bj13x5vtxuu14" path="res://body_planète.tscn" id="1_ktkx8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qgwa2"]
+albedo_color = Color(0.23137255, 0.35686275, 0.6627451, 1)
+
+[node name="Neptune" unique_id=1213070534 instance=ExtResource("1_ktkx8")]
+transform = Transform3D(1, 0, 0, 0, 0.9995065603657316, -0.031410759078128486, 0, 0.031410759078128486, 0.9995065603657316, 0, 0, 0)
+
+[node name="RigidBody3D" parent="." index="0" unique_id=399557911]
+vitesse_rotation = 2670.0
+
+[node name="MeshInstance3D" parent="RigidBody3D" index="0" unique_id=1113201612]
+surface_material_override/0 = SubResource("StandardMaterial3D_qgwa2")

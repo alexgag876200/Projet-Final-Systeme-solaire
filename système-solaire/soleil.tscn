@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://btajuydnr3306"]
+
+[ext_resource type="PackedScene" uid="uid://bj13x5vtxuu14" path="res://body_planète.tscn" id="1_r1vuo"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_usdec"]
+albedo_color = Color(1, 1, 0, 1)
+
+[node name="Soleil" unique_id=1213070534 instance=ExtResource("1_r1vuo")]
+
+[node name="RigidBody3D" parent="." index="0" unique_id=399557911]
+vitesse_rotation = 1997.0
+
+[node name="MeshInstance3D" parent="RigidBody3D" index="0" unique_id=1113201612]
+surface_material_override/0 = SubResource("StandardMaterial3D_usdec")

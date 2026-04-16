@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://ln4dvw7uwhs0"]
+
+[ext_resource type="PackedScene" uid="uid://bj13x5vtxuu14" path="res://body_planète.tscn" id="1_mvbpq"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_si51w"]
+albedo_color = Color(0.8509804, 0.627451, 0.4, 1)
+
+[node name="jupiter" unique_id=1213070534 instance=ExtResource("1_mvbpq")]
+
+[node name="RigidBody3D" parent="." index="0" unique_id=399557911]
+transform = Transform3D(1, 0, 0, 0, 0.9997426093226983, -0.022687333572781555, 0, 0.022687333572781555, 0.9997426093226983, 0, 0, 0)
+vitesse_rotation = 12600.0
+
+[node name="MeshInstance3D" parent="RigidBody3D" index="0" unique_id=1113201612]
+surface_material_override/0 = SubResource("StandardMaterial3D_si51w")
