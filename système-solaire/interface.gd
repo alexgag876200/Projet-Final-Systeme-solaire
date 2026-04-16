@@ -4,9 +4,7 @@ class_name Interface
 
 @export_group("Connection avec les autres noeuds et script") 
 @export var slider_vitesse: HSlider
-@export var lune : lunes
-@export var label_proche : Label
-@export var label_distance : Label
+
 
 var slider : float
 func _ready() -> void:
