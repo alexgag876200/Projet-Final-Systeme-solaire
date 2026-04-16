@@ -37,10 +37,11 @@ albedo_color = Color(0.99215686, 0.72156864, 0.07450981, 1)
 
 [node name="Node3D" type="Node3D" unique_id=1423429033]
 
-[node name="Mercure" type="RigidBody3D" parent="." unique_id=903449871 node_paths=PackedStringArray("centre_rotation")]
+[node name="Mercure" type="RigidBody3D" parent="." unique_id=903449871 node_paths=PackedStringArray("centre_rotation", "autres_corps")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, 0)
 script = ExtResource("1_gwx6f")
 centre_rotation = NodePath("../Soleil")
+autres_corps = [NodePath("../Vénus")]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Mercure" unique_id=761126749]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
@@ -51,9 +52,10 @@ surface_material_override/0 = SubResource("StandardMaterial3D_gwx6f")
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
 shape = SubResource("SphereShape3D_83ys0")
 
-[node name="Vénus" type="RigidBody3D" parent="." unique_id=1799065935]
+[node name="Vénus" type="RigidBody3D" parent="." unique_id=1799065935 node_paths=PackedStringArray("centre_rotation")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, 0)
 script = ExtResource("1_gwx6f")
+centre_rotation = NodePath("../Soleil")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Vénus" unique_id=934554791]
 transform = Transform3D(4.8, 0, 0, 0, 4.8, 0, 0, 0, 4.8, 0, 0, 0)
@@ -78,9 +80,10 @@ surface_material_override/0 = SubResource("StandardMaterial3D_wjc6f")
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
 shape = SubResource("SphereShape3D_83ys0")
 
-[node name="Mars" type="RigidBody3D" parent="." unique_id=1251426111]
+[node name="Mars" type="RigidBody3D" parent="." unique_id=1251426111 node_paths=PackedStringArray("centre_rotation")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 0, 0)
 script = ExtResource("1_gwx6f")
+centre_rotation = NodePath("../Soleil")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Mars" unique_id=232011234]
 transform = Transform3D(4.2, 0, 0, 0, 4.2, 0, 0, 0, 4.2, 0, 0, 0)
@@ -105,9 +108,10 @@ surface_material_override/0 = SubResource("StandardMaterial3D_ubnmg")
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
 shape = SubResource("SphereShape3D_83ys0")
 
-[node name="Saturne" type="RigidBody3D" parent="." unique_id=1733858684]
+[node name="Saturne" type="RigidBody3D" parent="." unique_id=1733858684 node_paths=PackedStringArray("centre_rotation")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 65, 0, 0)
 script = ExtResource("1_gwx6f")
+centre_rotation = NodePath("../Soleil")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Saturne" unique_id=1011826533]
 transform = Transform3D(9, 0, 0, 0, 9, 0, 0, 0, 9, 0, 0, 0)
@@ -118,9 +122,10 @@ surface_material_override/0 = SubResource("StandardMaterial3D_g8mi4")
 transform = Transform3D(9, 0, 0, 0, 9, 0, 0, 0, 9, 0, 0, 0)
 shape = SubResource("SphereShape3D_83ys0")
 
-[node name="Uranus" type="RigidBody3D" parent="." unique_id=53104217]
+[node name="Uranus" type="RigidBody3D" parent="." unique_id=53104217 node_paths=PackedStringArray("centre_rotation")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 80, 0, 0)
 script = ExtResource("1_gwx6f")
+centre_rotation = NodePath("../Soleil")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Uranus" unique_id=274959789]
 transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, 0, 0, 0)
@@ -131,9 +136,10 @@ surface_material_override/0 = SubResource("StandardMaterial3D_odjec")
 transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, 0, 0, 0)
 shape = SubResource("SphereShape3D_83ys0")
 
-[node name="Neptune" type="RigidBody3D" parent="." unique_id=283865814]
+[node name="Neptune" type="RigidBody3D" parent="." unique_id=283865814 node_paths=PackedStringArray("centre_rotation")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 95, 0, 0)
 script = ExtResource("1_gwx6f")
+centre_rotation = NodePath("../Soleil")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Neptune" unique_id=435930502]
 transform = Transform3D(6.5, 0, 0, 0, 6.5, 0, 0, 0, 6.5, 0, 0, 0)
@@ -144,8 +150,9 @@ surface_material_override/0 = SubResource("StandardMaterial3D_mtdwt")
 transform = Transform3D(6.5, 0, 0, 0, 6.5, 0, 0, 0, 6.5, 0, 0, 0)
 shape = SubResource("SphereShape3D_83ys0")
 
-[node name="Soleil" type="RigidBody3D" parent="." unique_id=1265030335]
+[node name="Soleil" type="RigidBody3D" parent="." unique_id=1265030335 node_paths=PackedStringArray("centre_rotation")]
 script = ExtResource("1_gwx6f")
+centre_rotation = NodePath(".")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Soleil" unique_id=1999320243]
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 0, 0, 0)
