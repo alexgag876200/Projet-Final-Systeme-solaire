@@ -81,12 +81,12 @@ func acceleration(position_rellee: Vector3) -> Vector3:
 	Retour:
 	L'accélération gravitationnelle exercée sur le corps en m/s^2
 	"""
-	var force: Vector3
+	var a = Vector3.ZERO
 	for corps in autres_corps:
 		
 		var facteur = -G * masse_soleil / (position_rellee.length()**3)
-		force = (position_rellee - centre_rotation.position) * facteur
-	return force
+		a += (position_rellee - corps.position) * facteur
+	return a
 func runge_kotta(temps_dernier_ecran):
 		#Nombre de période à simuler dans l'écran
 	var nb_periode = temps_dernier_ecran  * periode / periode_relative

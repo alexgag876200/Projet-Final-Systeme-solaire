@@ -8,4 +8,4 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	rotation.y= deg_to_rad(delta*vitesse_rotation)
+	rotation.y += deg_to_rad(delta*vitesse_rotation)
