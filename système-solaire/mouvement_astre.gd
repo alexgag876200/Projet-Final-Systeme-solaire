@@ -2,7 +2,7 @@ extends Node3D
 
 
 
-@export var centre_rotation: Node3D
+
 
 @export var autres_corps: Array[Node3D]
 
@@ -23,16 +23,16 @@ var temps_rotation_sur_elle_meme: float
 
 
 @export_group("Paramètre de conversion simulation")
-@export var min_distance_simulee: float = 10
-@export var max_distance_simulee: float = 200
-@export var min_distance_reelle: float = 5e5
-@export var max_distance_reelle: float = 10e30
+@export var min_distance_simulee: float
+@export var max_distance_simulee: float
+@export var min_distance_reelle: float
+@export var max_distance_reelle: float
 
 @export_group("Paramètre de simulation")
 @export var periode_relative: float = 20.0
-@export var etapes_calcul_par_ecran: int = 10000
+@export var etapes_calcul_par_ecran: int = 100
 
-const masse_soleil :float =1.9884e30
+
 const G: float = 6.673e-11
 
 var distance_entre_astre: Vector3
@@ -72,7 +72,7 @@ func conv_position_reelle_a_simulee(position_reelle : Vector3) -> Vector3:
 	
 	return position_reelle.normalized() * facteur_distance_simulee
 
-func données_planètes(data: Dictionary) :
+func donnees_planetes(data: Dictionary) :
 	demi_grand_axe = data["demi_grand_axe"]
 	excentricite = data["excentricite"]
 	inclinaison = data["inclinaison"]
@@ -88,13 +88,16 @@ func données_planètes(data: Dictionary) :
 	
 	
 	
-func assignation_données_planètes(data:Array):
+
+func assignation_donnees_planete() -> void:
 	
-	for donnees in data:
-		if donnees["nom"] == self.name:
-			self.name = données_planètes(donnees)
+	for corps in donnees.DONNEES_CORPS:
+		print("Data :", corps["nom"])
+		if corps["nom"] == self.name:
 			
-			return 
+			donnees_planetes(corps)
+			return
+
 	
 	
 	
@@ -148,7 +151,7 @@ func runge_kotta(temps_dernier_ecran):
 		
 func _ready() -> void:
 
-	assignation_données_planètes(donnees.DONNEES_CORPS)
+	assignation_donnees_planete()
 	periode = periode_orbitale
 	r_i = Vector3(perihelie, 0, 0)
 	v_i = Vector3(0, 0, vitesse_perihelie * 1000.0)
