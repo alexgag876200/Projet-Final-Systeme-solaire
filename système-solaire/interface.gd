@@ -18,11 +18,12 @@ func _process(_delta: float) -> void:
 	
 """2 fonction qui s'utilisent ensemble pour pouvoir transmettre la valeur du slider dans un autre script en l'appelant"""
 #func changement(value:float):
-	#lune.vitesse_simulation = slider_vitesse.value
+	#Astre.vitesse_simulation = slider_vitesse.value
 func slide_value() -> float:
 	
 	slider = slider_vitesse.value
 	return slider
+
 
 func format_scientifique(valeur: float) -> String:
 	"""fonction qui prend un nombre et le renvoie en notation scientifique"""
