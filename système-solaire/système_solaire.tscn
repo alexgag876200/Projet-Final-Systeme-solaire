@@ -23,36 +23,36 @@ sky_mode = 1
 [node name="Soleil" parent="." unique_id=1213070534 node_paths=PackedStringArray("centre_rotation") instance=ExtResource("1_odjec")]
 script = ExtResource("3_uqj0e")
 centre_rotation = NodePath(".")
-demi_grand_axe = null
-excentricite = null
-inclinaison = null
-argument_perihelie = null
-perihelie = null
-vitesse_perihelie = null
-periode_orbitale = null
-temps_rot_soleil = null
-masse = null
-rayon = null
-temps_rotation_sur_elle_meme = null
-min_distance_simulee = null
-max_distance_simulee = null
-min_distance_reelle = null
-max_distance_reelle = null
-periode_relative = null
-etapes_calcul_par_ecran = null
 
-[node name="Mercure" parent="." unique_id=1895002169 instance=ExtResource("2_mtdwt")]
+[node name="Mercure" parent="." unique_id=1895002169 node_paths=PackedStringArray("centre_rotation") instance=ExtResource("2_mtdwt")]
+script = ExtResource("3_uqj0e")
+centre_rotation = NodePath("../Soleil")
 
-[node name="Vénus" parent="." unique_id=1275429055 instance=ExtResource("3_471bu")]
+[node name="Vénus" parent="." unique_id=1275429055 node_paths=PackedStringArray("centre_rotation") instance=ExtResource("3_471bu")]
+script = ExtResource("3_uqj0e")
+centre_rotation = NodePath("../Soleil")
+min_distance_reelle = 1.0
 
-[node name="Terre" parent="." unique_id=1264067127 instance=ExtResource("4_uqj0e")]
+[node name="Terre" parent="." unique_id=1264067127 node_paths=PackedStringArray("centre_rotation") instance=ExtResource("4_uqj0e")]
+script = ExtResource("3_uqj0e")
+centre_rotation = NodePath("../Soleil")
 
-[node name="Mars" parent="." unique_id=1149372289 instance=ExtResource("5_fuldb")]
+[node name="Mars" parent="." unique_id=1149372289 node_paths=PackedStringArray("centre_rotation") instance=ExtResource("5_fuldb")]
+script = ExtResource("3_uqj0e")
+centre_rotation = NodePath("../Soleil")
 
-[node name="jupiter" parent="." unique_id=762818665 instance=ExtResource("6_olkoh")]
+[node name="jupiter" parent="." unique_id=762818665 node_paths=PackedStringArray("centre_rotation") instance=ExtResource("6_olkoh")]
+script = ExtResource("3_uqj0e")
+centre_rotation = NodePath("../Soleil")
 
-[node name="saturne" parent="." unique_id=1972900681 instance=ExtResource("7_7rptf")]
+[node name="saturne" parent="." unique_id=1972900681 node_paths=PackedStringArray("centre_rotation") instance=ExtResource("7_7rptf")]
+script = ExtResource("3_uqj0e")
+centre_rotation = NodePath("../Soleil")
 
-[node name="Uranus" parent="." unique_id=981561214 instance=ExtResource("8_ebwtv")]
+[node name="Uranus" parent="." unique_id=981561214 node_paths=PackedStringArray("centre_rotation") instance=ExtResource("8_ebwtv")]
+script = ExtResource("3_uqj0e")
+centre_rotation = NodePath("../Soleil")
 
-[node name="Neptune" parent="." unique_id=1056707836 instance=ExtResource("9_8r7bp")]
+[node name="Neptune" parent="." unique_id=1056707836 node_paths=PackedStringArray("centre_rotation") instance=ExtResource("9_8r7bp")]
+script = ExtResource("3_uqj0e")
+centre_rotation = NodePath("../Soleil")

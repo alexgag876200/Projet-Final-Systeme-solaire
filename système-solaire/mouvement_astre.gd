@@ -3,30 +3,30 @@ extends Node3D
 
 
 @export var centre_rotation: Node3D
-@export var lune: Node3D
+
 @export var autres_corps: Array[Node3D]
 
-@export_group("élements orbitaux")
-@export var demi_grand_axe: float
-@export var excentricite: float
-@export var inclinaison: float
-@export var argument_perihelie: float
-@export var perihelie: float = 664862e3
-@export var vitesse_perihelie: float
-@export var periode_orbitale: float = 299819.0
-@export var temps_rot_soleil: float
 
 
-@export_group("Propriétés physiques")
-@export var masse: float = 1.989e27
-@export var rayon: float
-@export var temps_rotation_sur_elle_meme:float
+var demi_grand_axe: float 
+var excentricite: float
+var inclinaison: float
+var argument_perihelie: float
+var perihelie: float 
+var vitesse_perihelie: float
+var periode_orbitale: float 
+var temps_rot_soleil: float
+
+var masse: float  
+var rayon: float
+var temps_rotation_sur_elle_meme: float
+
 
 @export_group("Paramètre de conversion simulation")
-@export var min_distance_simulee: float = 15.0
-@export var max_distance_simulee: float = 40.0
-@export var min_distance_reelle: float = 5e8
-@export var max_distance_reelle: float = 9e8
+@export var min_distance_simulee: float = 10
+@export var max_distance_simulee: float = 200
+@export var min_distance_reelle: float = 5e5
+@export var max_distance_reelle: float = 10e30
 
 @export_group("Paramètre de simulation")
 @export var periode_relative: float = 20.0
@@ -50,9 +50,7 @@ var k4: Vector3
 
 var periode : float
 # Called when the node enters the scene tree for the first time.
-func donnée_planètes ():
-	for corps in donnees.donnee:
-		
+
 
 
 func conv_position_reelle_a_simulee(position_reelle : Vector3) -> Vector3:
@@ -74,9 +72,36 @@ func conv_position_reelle_a_simulee(position_reelle : Vector3) -> Vector3:
 	
 	return position_reelle.normalized() * facteur_distance_simulee
 
-
+func données_planètes(data: Dictionary) :
+	demi_grand_axe = data["demi_grand_axe"]
+	excentricite = data["excentricite"]
+	inclinaison = data["inclinaison"]
+	argument_perihelie  = data["argument_perihelie"]
+	perihelie  = data["perihelie"]
+	vitesse_perihelie  = data["vitesse_perihelie"]
+	periode_orbitale  = data["periode_orbitale"]
+	temps_rot_soleil  = data["temps_rot_soleil"]
+	masse  = data["masse"]
+	rayon  = data["rayon"]
+	temps_rotation_sur_elle_meme  = data["temps_rotation_sur_elle_meme"]
+	
+	
+	
+	
+func assignation_données_planètes(data:Array):
+	
+	for donnees in data:
+		if donnees["nom"] == self.name:
+			self.name = données_planètes(donnees)
+			
+			return 
+	
+	
+	
+	
 
 func acceleration(position_reelle: Vector3) -> Vector3:
+	
 	var a = Vector3.ZERO
 	for corps in autres_corps:
 		var r_ij = corps.r_i - position_reelle   # vecteur vers l'autre corps, en mètres
@@ -85,6 +110,12 @@ func acceleration(position_reelle: Vector3) -> Vector3:
 			continue
 		a += G * corps.masse / dist**3 * r_ij
 	return a
+
+
+
+
+
+
 func runge_kotta(temps_dernier_ecran):
 		#Nombre de période à simuler dans l'écran
 	var dt = temps_dernier_ecran / float(etapes_calcul_par_ecran)
@@ -112,12 +143,19 @@ func runge_kotta(temps_dernier_ecran):
 		
 		
 		
+		
+		
+		
 func _ready() -> void:
+
+	assignation_données_planètes(donnees.DONNEES_CORPS)
+	periode = periode_orbitale
 	r_i = Vector3(perihelie, 0, 0)
 	v_i = Vector3(0, 0, vitesse_perihelie * 1000.0)
-	periode = periode_orbitale
-	
+
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
+
 
 
 
