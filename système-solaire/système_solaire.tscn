@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://btajuydnr3306" path="res://soleil.tscn" id="1_odjec"]
 [ext_resource type="PackedScene" uid="uid://b7ypv6som8anc" path="res://mercure.tscn" id="2_mtdwt"]
 [ext_resource type="PackedScene" uid="uid://b6g6uyx6o400v" path="res://vénus.tscn" id="3_471bu"]
+[ext_resource type="Script" uid="uid://chn8r145v6kkr" path="res://mouvement_astre.gd" id="3_uqj0e"]
 [ext_resource type="PackedScene" uid="uid://uj0yvuicq78s" path="res://terre.tscn" id="4_uqj0e"]
 [ext_resource type="PackedScene" uid="uid://b5ul8o8kk66im" path="res://mars.tscn" id="5_fuldb"]
 [ext_resource type="PackedScene" uid="uid://ln4dvw7uwhs0" path="res://jupiter.tscn" id="6_olkoh"]
@@ -15,33 +16,43 @@
 [node name="Camera3D" type="Camera3D" parent="." unique_id=729626946]
 transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 0, 25, 100)
 
-[node name="Soleil" parent="." unique_id=1213070534 instance=ExtResource("1_odjec")]
-transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 0, 0, 0)
-
-[node name="Mercure" parent="." unique_id=399045006 instance=ExtResource("2_mtdwt")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 10, 0, 0)
-
-[node name="Vénus" parent="." unique_id=1693507552 instance=ExtResource("3_471bu")]
-transform = Transform3D(4.8, 0, 0, 0, 4.8, 0, 0, 0, 4.8, 20, 0, 0)
-
-[node name="Terre" parent="." unique_id=1942270358 instance=ExtResource("4_uqj0e")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 35, 0, 0)
-
-[node name="Mars" parent="." unique_id=1099261050 instance=ExtResource("5_fuldb")]
-transform = Transform3D(4.2, 0, 0, 0, 4.2, 0, 0, 0, 4.2, 45, 0, 0)
-
-[node name="jupiter" parent="." unique_id=505340532 instance=ExtResource("6_olkoh")]
-transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 60, 0, 0)
-
-[node name="saturne" parent="." unique_id=1420047899 instance=ExtResource("7_7rptf")]
-transform = Transform3D(9, 0, 0, 0, 9, 0, 0, 0, 9, 75, 0, 0)
-
-[node name="Uranus" parent="." unique_id=1432990258 instance=ExtResource("8_ebwtv")]
-transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, 90, 0, 0)
-
-[node name="Neptune" parent="." unique_id=58027044 instance=ExtResource("9_8r7bp")]
-transform = Transform3D(6.5, 0, 0, 0, 6.4967926423772555, -0.20416993400783504, 0, 0.20416993400783504, 6.4967926423772555, 105, 0, 0)
-
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1433912278]
 shadow_enabled = true
 sky_mode = 1
+
+[node name="Soleil" parent="." unique_id=1213070534 node_paths=PackedStringArray("centre_rotation") instance=ExtResource("1_odjec")]
+script = ExtResource("3_uqj0e")
+centre_rotation = NodePath(".")
+demi_grand_axe = null
+excentricite = null
+inclinaison = null
+argument_perihelie = null
+perihelie = null
+vitesse_perihelie = null
+periode_orbitale = null
+temps_rot_soleil = null
+masse = null
+rayon = null
+temps_rotation_sur_elle_meme = null
+min_distance_simulee = null
+max_distance_simulee = null
+min_distance_reelle = null
+max_distance_reelle = null
+periode_relative = null
+etapes_calcul_par_ecran = null
+
+[node name="Mercure" parent="." unique_id=1895002169 instance=ExtResource("2_mtdwt")]
+
+[node name="Vénus" parent="." unique_id=1275429055 instance=ExtResource("3_471bu")]
+
+[node name="Terre" parent="." unique_id=1264067127 instance=ExtResource("4_uqj0e")]
+
+[node name="Mars" parent="." unique_id=1149372289 instance=ExtResource("5_fuldb")]
+
+[node name="jupiter" parent="." unique_id=762818665 instance=ExtResource("6_olkoh")]
+
+[node name="saturne" parent="." unique_id=1972900681 instance=ExtResource("7_7rptf")]
+
+[node name="Uranus" parent="." unique_id=981561214 instance=ExtResource("8_ebwtv")]
+
+[node name="Neptune" parent="." unique_id=1056707836 instance=ExtResource("9_8r7bp")]

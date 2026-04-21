@@ -1,0 +1,164 @@
+
+<style>
+h2.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
+.wrap{padding:1rem 0}
+.filter-row{display:flex;gap:8px;margin-bottom:1rem;flex-wrap:wrap}
+button.pill{font-size:12px;padding:4px 12px;border-radius:20px;border:0.5px solid var(--color-border-secondary);background:var(--color-background-primary);color:var(--color-text-secondary);cursor:pointer;transition:background .15s,color .15s}
+button.pill.active{background:var(--color-background-secondary);color:var(--color-text-primary);border-color:var(--color-border-primary)}
+.tbl-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:13px;table-layout:fixed}
+th{font-size:11px;font-weight:500;color:var(--color-text-secondary);text-align:left;padding:6px 10px;border-bottom:0.5px solid var(--color-border-secondary);white-space:nowrap;background:var(--color-background-secondary)}
+td{padding:7px 10px;border-bottom:0.5px solid var(--color-border-tertiary);color:var(--color-text-primary);white-space:nowrap;vertical-align:middle}
+tr:last-child td{border-bottom:none}
+td.name{font-weight:500}
+.dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;flex-shrink:0;vertical-align:middle}
+.unit{font-size:11px;color:var(--color-text-tertiary);margin-left:2px}
+.note{font-size:12px;color:var(--color-text-secondary);margin-top:10px;line-height:1.5}
+.gdscript{background:var(--color-background-secondary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);padding:12px 14px;font-family:var(--font-mono);font-size:12px;color:var(--color-text-primary);margin-top:1rem;overflow-x:auto;white-space:pre}
+.tab-bar{display:flex;gap:4px;margin-bottom:1rem;border-bottom:0.5px solid var(--color-border-tertiary);padding-bottom:0}
+button.tab{font-size:13px;padding:6px 14px;border:none;background:none;color:var(--color-text-secondary);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px}
+button.tab.active{color:var(--color-text-primary);border-bottom-color:var(--color-text-primary);font-weight:500}
+.panel{display:none}.panel.show{display:block}
+</style>
+
+<div class="wrap">
+<h2 class="sr-only">Tableau des variables planétaires pour la simulation du système solaire</h2>
+
+<div class="tab-bar">
+  <button class="tab active" onclick="switchTab('orb')">Éléments orbitaux</button>
+  <button class="tab" onclick="switchTab('phys')">Propriétés physiques</button>
+  <button class="tab" onclick="switchTab('code')">GDScript (dict)</button>
+</div>
+
+<div id="tab-orb" class="panel show">
+<div class="tbl-wrap">
+<table>
+<colgroup>
+  <col style="width:110px"><col style="width:90px"><col style="width:72px"><col style="width:72px"><col style="width:78px"><col style="width:82px"><col style="width:88px"><col style="width:80px">
+</colgroup>
+<thead>
+<tr>
+  <th>Astre</th>
+  <th>a <span class="unit">(UA)</span></th>
+  <th>e</th>
+  <th>i <span class="unit">(°)</span></th>
+  <th>ω <span class="unit">(°)</span></th>
+  <th>Ω <span class="unit">(°)</span></th>
+  <th>T rév. <span class="unit">(j)</span></th>
+  <th>v périhélie <span class="unit">(km/s)</span></th>
+</tr>
+</thead>
+<tbody id="orb-body"></tbody>
+</table>
+</div>
+<p class="note">a = demi-grand axe · e = excentricité · i = inclinaison / écliptique · ω = argument du périhélie · Ω = longitude du nœud ascendant · T rév. = période sidérale · v pérh. = vitesse au périhélie<br>Source : JPL Horizons, éléments J2000 (2000-Jan-1.5 TDB)</p>
+</div>
+
+<div id="tab-phys" class="panel">
+<div class="tbl-wrap">
+<table>
+<colgroup>
+  <col style="width:110px"><col style="width:110px"><col style="width:80px"><col style="width:88px"><col style="width:88px">
+</colgroup>
+<thead>
+<tr>
+  <th>Astre</th>
+  <th>Masse <span class="unit">(kg)</span></th>
+  <th>Rayon <span class="unit">(km)</span></th>
+  <th>T rotation <span class="unit">(h)</span></th>
+  <th>Rayon visuel <span class="unit">(UA)</span></th>
+</tr>
+</thead>
+<tbody id="phys-body"></tbody>
+</table>
+</div>
+<p class="note">T rotation = période de rotation sidérale (valeur négative = rotation rétrograde) · Rayon visuel = suggestion d'échelle pour Godot (non physique)</p>
+</div>
+
+<div id="tab-code" class="panel">
+<div class="gdscript" id="code-out"></div>
+<p class="note">Copiez ce dictionnaire dans votre autoload ou dans <code>SimulationManager.gd</code>. Les positions et vitesses initiales sont calculées à partir des éléments kepleriens au lancement — utilisez la fonction de conversion ci-dessous.</p>
+</div>
+</div>
+
+<script>
+const bodies = [
+  {name:"Soleil",    color:"#F5A623", a:0,        e:0,       i:0,     w:0,      O:0,      T:0,          vp:0,       mass:1.989e30, r:695700,  rot:609.12,   vis:0.05},
+  {name:"Mercure",   color:"#9E9E9E", a:0.38710,  e:0.20563, i:7.005, w:29.124, O:48.331, T:87.969,     vp:58.98,   mass:3.302e23, r:2439.7,  rot:1407.6,   vis:0.003},
+  {name:"Vénus",     color:"#E8C97A", a:0.72333,  e:0.00677, i:3.395, w:54.884, O:76.680, T:224.701,    vp:35.26,   mass:4.869e24, r:6051.8,  rot:-5832.5,  vis:0.005},
+  {name:"Terre",     color:"#4A90D9", a:1.00000,  e:0.01671, i:0.000, w:114.208,O:0.000,  T:365.256,    vp:30.29,   mass:5.972e24, r:6371.0,  rot:23.934,   vis:0.006},
+  {name:"Mars",      color:"#C1440E", a:1.52366,  e:0.09341, i:1.850, w:286.502,O:49.558, T:686.971,    vp:26.50,   mass:6.419e23, r:3389.5,  rot:24.623,   vis:0.004},
+  {name:"Jupiter",   color:"#C88B3A", a:5.20336,  e:0.04839, i:1.303, w:273.867,O:100.464,T:4332.589,   vp:13.72,   mass:1.899e27, r:69911,   rot:9.926,    vis:0.025},
+  {name:"Saturne",   color:"#E4D191", a:9.53707,  e:0.05415, i:2.489, w:339.392,O:113.665,T:10759.22,   vp:10.18,   mass:5.685e26, r:58232,   rot:10.656,   vis:0.020},
+  {name:"Uranus",    color:"#7DE8E8", a:19.19126, e:0.04717, i:0.773, w:96.998, O:74.006, T:30688.5,    vp:7.11,    mass:8.683e25, r:25362,   rot:-17.24,   vis:0.015},
+  {name:"Neptune",   color:"#3F54BA", a:30.06896, e:0.00859, i:1.770, w:276.340,O:131.784,T:60182.0,    vp:5.50,    mass:1.024e26, r:24622,   rot:16.11,    vis:0.015},
+];
+
+function fmt(v, dec) {
+  if(v === 0) return "—";
+  return v.toFixed(dec);
+}
+function fmtMass(m) {
+  if(m === 0) return "—";
+  const exp = Math.floor(Math.log10(m));
+  const coef = (m / Math.pow(10, exp)).toFixed(3);
+  return coef + " × 10" + superscript(exp);
+}
+function superscript(n) {
+  const sup = {"0":"⁰","1":"¹","2":"²","3":"³","4":"⁴","5":"⁵","6":"⁶","7":"⁷","8":"⁸","9":"⁹","-":"⁻"};
+  return String(n).split("").map(c => sup[c]||c).join("");
+}
+
+const orbBody = document.getElementById("orb-body");
+const physBody = document.getElementById("phys-body");
+
+bodies.forEach(b => {
+  const orb = document.createElement("tr");
+  orb.innerHTML = `
+    <td class="name"><span class="dot" style="background:${b.color}"></span>${b.name}</td>
+    <td>${fmt(b.a,5)}</td>
+    <td>${fmt(b.e,5)}</td>
+    <td>${fmt(b.i,3)}</td>
+    <td>${fmt(b.w,3)}</td>
+    <td>${fmt(b.O,3)}</td>
+    <td>${b.T===0?"—":b.T.toLocaleString("fr-CA",{maximumFractionDigits:1})}</td>
+    <td>${fmt(b.vp,2)}</td>`;
+  orbBody.appendChild(orb);
+
+  const phys = document.createElement("tr");
+  phys.innerHTML = `
+    <td class="name"><span class="dot" style="background:${b.color}"></span>${b.name}</td>
+    <td style="font-size:12px">${fmtMass(b.mass)}</td>
+    <td>${b.r.toLocaleString("fr-CA")}</td>
+    <td>${fmt(b.rot,2)}</td>
+    <td>${fmt(b.vis,3)}</td>`;
+  physBody.appendChild(phys);
+});
+
+const codeOut = document.getElementById("code-out");
+let code = "var bodies = [\n";
+bodies.forEach(b => {
+  code += `  {\n`;
+  code += `    "name": "${b.name}",\n`;
+  code += `    "mass": ${b.mass},   # kg\n`;
+  code += `    "a":    ${b.a},      # UA\n`;
+  code += `    "e":    ${b.e},\n`;
+  code += `    "i":    ${b.i},      # degrés\n`;
+  code += `    "w":    ${b.w},      # arg. périhélie (degrés)\n`;
+  code += `    "Omega":${b.O},      # nœud ascendant (degrés)\n`;
+  code += `    "T_rev":${b.T},      # jours\n`;
+  code += `    "v_peri":${b.vp},    # km/s\n`;
+  code += `    "rot":  ${b.rot},    # heures (négatif = rétrograde)\n`;
+  code += `    "radius_vis":${b.vis} # UA (affichage Godot)\n`;
+  code += `  },\n`;
+});
+code += "]\n";
+codeOut.textContent = code;
+
+function switchTab(id) {
+  document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
+  document.querySelectorAll(".panel").forEach(p => p.classList.remove("show"));
+  document.getElementById("tab-"+id).classList.add("show");
+  event.target.classList.add("active");
+}
+</script>

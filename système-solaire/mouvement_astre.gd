@@ -1,7 +1,9 @@
-extends RigidBody3D
+extends Node3D
 
-@export var centre_rotation: RigidBody3D
-@export var lune: RigidBody3D
+
+
+@export var centre_rotation: Node3D
+@export var lune: Node3D
 @export var autres_corps: Array[Node3D]
 
 @export_group("élements orbitaux")
@@ -48,7 +50,9 @@ var k4: Vector3
 
 var periode : float
 # Called when the node enters the scene tree for the first time.
-
+func donnée_planètes ():
+	for corps in donnees.donnee:
+		
 
 
 func conv_position_reelle_a_simulee(position_reelle : Vector3) -> Vector3:
@@ -112,6 +116,7 @@ func _ready() -> void:
 	r_i = Vector3(perihelie, 0, 0)
 	v_i = Vector3(0, 0, vitesse_perihelie * 1000.0)
 	periode = periode_orbitale
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 
 
