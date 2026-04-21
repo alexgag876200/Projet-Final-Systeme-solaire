@@ -9,17 +9,16 @@ class_name Interface
 var slider : float
 func _ready() -> void:
 	slider_vitesse.value = 3
-	slider_vitesse.value_changed.connect(changement)
+	#slider_vitesse.value_changed.connect(changement)
 
 func _process(_delta: float) -> void:
-	label_distance.text = format_scientifique(lune.position_entre_lunes().length()) + " m"
-	label_proche.text = lune.lune_plus_proche()
+	pass
 	
 	
 	
 """2 fonction qui s'utilisent ensemble pour pouvoir transmettre la valeur du slider dans un autre script en l'appelant"""
-func changement(value:float):
-	lune.vitesse_simulation = slider_vitesse.value
+#func changement(value:float):
+	#lune.vitesse_simulation = slider_vitesse.value
 func slide_value() -> float:
 	
 	slider = slider_vitesse.value

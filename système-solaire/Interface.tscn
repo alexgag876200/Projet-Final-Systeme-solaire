@@ -5,14 +5,19 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6lq5x"]
 bg_color = Color(0.6969296, 0.5530413, 0.6138384, 1)
 
-[node name="Interface" type="Control" unique_id=187721183]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xodjk"]
+bg_color = Color(8.750384, 12.694407, 11.3562565, 0.13333334)
+
+[node name="Interface" type="Control" unique_id=187721183 node_paths=PackedStringArray("slider_vitesse")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 script = ExtResource("1_xodjk")
+slider_vitesse = NodePath("VBoxContainer/Control/VBoxContainer/MarginContainer/HBoxContainer/HSlider")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1100711485]
 layout_mode = 0
@@ -73,3 +78,39 @@ layout_mode = 2
 layout_mode = 2
 max_value = 10.0
 value = 5.0
+
+[node name="Affichage" type="VBoxContainer" parent="VBoxContainer" unique_id=1362829880]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/Affichage" unique_id=1812746299]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_xodjk")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Affichage/PanelContainer" unique_id=2002106383]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Affichage/PanelContainer/MarginContainer" unique_id=1022649420]
+layout_mode = 2
+
+[node name="Nom Astre" type="Label" parent="VBoxContainer/Affichage/PanelContainer/MarginContainer/VBoxContainer" unique_id=1942246877]
+layout_mode = 2
+
+[node name="Masse" type="Label" parent="VBoxContainer/Affichage/PanelContainer/MarginContainer/VBoxContainer" unique_id=97540366]
+layout_mode = 2
+
+[node name="V_périphérie" type="Label" parent="VBoxContainer/Affichage/PanelContainer/MarginContainer/VBoxContainer" unique_id=2079429381]
+layout_mode = 2
+
+[node name="Excentricité Orbite" type="Label" parent="VBoxContainer/Affichage/PanelContainer/MarginContainer/VBoxContainer" unique_id=1862146957]
+layout_mode = 2
+
+[node name="Periode révo Soleil" type="Label" parent="VBoxContainer/Affichage/PanelContainer/MarginContainer/VBoxContainer" unique_id=1964652704]
+layout_mode = 2
+
+[node name="Periode révolution" type="Label" parent="VBoxContainer/Affichage/PanelContainer/MarginContainer/VBoxContainer" unique_id=1473774822]
+layout_mode = 2
