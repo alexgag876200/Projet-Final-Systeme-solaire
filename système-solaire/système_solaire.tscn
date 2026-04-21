@@ -26,7 +26,6 @@ sky_mode = 1
 
 [node name="Soleil" parent="." unique_id=1213070534 node_paths=PackedStringArray("centre_rotation") instance=ExtResource("1_odjec")]
 script = ExtResource("3_uqj0e")
-centre_rotation = NodePath(".")
 demi_grand_axe = null
 excentricite = null
 inclinaison = null
@@ -44,6 +43,7 @@ min_distance_reelle = null
 max_distance_reelle = null
 periode_relative = null
 etapes_calcul_par_ecran = null
+centre_rotation = NodePath(".")
 
 [node name="Mercure" parent="." unique_id=1895002169 instance=ExtResource("2_mtdwt")]
 

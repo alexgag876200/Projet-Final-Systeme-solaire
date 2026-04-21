@@ -4,6 +4,12 @@ class_name Interface
 
 @export_group("Connection avec les autres noeuds et script") 
 @export var slider_vitesse: HSlider
+#@export var label_nom : Label1
+#@export var label_masse : Label2
+#@export var label_v_peri : Label3
+#@export var label_excentricite : Label4
+#@export var label_periode_soleil : Label5
+#@export var label_periode_astre : Label6
 
 
 var slider : float
@@ -24,6 +30,8 @@ func slide_value() -> float:
 	slider = slider_vitesse.value
 	return slider
 
+#func affichage_astre(_delta: float) -> void:
+	#Label_nom.text = "Nom:", name
 
 func format_scientifique(valeur: float) -> String:
 	"""fonction qui prend un nombre et le renvoie en notation scientifique"""
