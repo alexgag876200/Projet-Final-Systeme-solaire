@@ -1,4 +1,4 @@
-extends RigidBody3D
+extends Node3D
 @export var vitesse_rotation: float
 
 # Called when the node enters the scene tree for the first time.
@@ -8,4 +8,4 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	rotation.y += deg_to_rad(delta*vitesse_rotation)
+	rotation.y += deg_to_rad(vitesse_rotation)*delta

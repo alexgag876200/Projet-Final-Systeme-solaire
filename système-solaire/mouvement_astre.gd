@@ -39,7 +39,7 @@ var v_i: Vector3
 var a_i: Vector3
 
 
-
+var temps_sec_mois: float= 2592000
 var temps_ecoule: float = 0.0
 var k1: Vector3
 var k2: Vector3
@@ -72,26 +72,18 @@ func conv_position_reelle_a_simulee(position_reelle : Vector3) -> Vector3:
 
 
 
-func acceleration(position_rellee: Vector3) -> Vector3:
-	"""Calcule l'accélération gravitationnelle exercée sur le corps selon sa position
-	
-	Paramètre:
-	position_reelle : sa position dans l'espace en m
-	
-	Retour:
-	L'accélération gravitationnelle exercée sur le corps en m/s^2
-	"""
+func acceleration(position_reelle: Vector3) -> Vector3:
 	var a = Vector3.ZERO
 	for corps in autres_corps:
-		
-		var facteur = -G * masse_soleil / (position_rellee.length()**3)
-		a += (position_rellee - corps.position) * facteur
+		var r_ij = corps.r_i - position_reelle   # vecteur vers l'autre corps, en mètres
+		var dist = r_ij.length()
+		if dist < 1e3:
+			continue
+		a += G * corps.masse / dist**3 * r_ij
 	return a
 func runge_kotta(temps_dernier_ecran):
 		#Nombre de période à simuler dans l'écran
-	var nb_periode = temps_dernier_ecran  * periode / periode_relative
-	#Pas de la simulation
-	var dt = nb_periode / etapes_calcul_par_ecran
+	var dt = temps_dernier_ecran / float(etapes_calcul_par_ecran)
 		
 	for i in range(etapes_calcul_par_ecran):
 		# k1
@@ -117,13 +109,13 @@ func runge_kotta(temps_dernier_ecran):
 		
 		
 func _ready() -> void:
-	r_i = Vector3(perihelie,0,0)
-	v_i = Vector3(vitesse_perihelie,0,0)
-
+	r_i = Vector3(perihelie, 0, 0)
+	v_i = Vector3(0, 0, vitesse_perihelie * 1000.0)
+	periode = periode_orbitale
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 
 
 
 func _process(delta: float) -> void:
-	runge_kotta(etapes_calcul_par_ecran)
+	runge_kotta(delta * temps_sec_mois)
 	position = conv_position_reelle_a_simulee(r_i)
