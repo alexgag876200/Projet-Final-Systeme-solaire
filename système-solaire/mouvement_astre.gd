@@ -30,7 +30,7 @@ var temps_rotation_sur_elle_meme: float
 
 @export_group("Paramètre de simulation")
 @export var periode_relative: float = 20.0
-@export var etapes_calcul_par_ecran: int = 100
+@export var etapes_calcul_par_ecran: int = 50
 
 
 const G: float = 6.673e-11
@@ -64,13 +64,26 @@ func conv_position_reelle_a_simulee(position_reelle : Vector3) -> Vector3:
 	la position dans le monde de la simulation à utiliser
 	"""
 	
-	var distance_relle = position_reelle.length()
-	var ratio_distance = inverse_lerp(min_distance_reelle, max_distance_reelle, 
-		distance_relle)
-	var facteur_distance_simulee = lerp (min_distance_simulee, max_distance_simulee,
-		 ratio_distance)
 	
-	return position_reelle.normalized() * facteur_distance_simulee
+	if not position_reelle.is_finite():
+		return Vector3.ZERO
+
+	var distance_reelle = position_reelle.length()
+	if distance_reelle <= 0.0:
+		return Vector3.ZERO
+
+	var t = inverse_lerp(min_distance_reelle, max_distance_reelle, distance_reelle)
+	if not is_finite(t):
+		t = 0.0
+
+	var distance_simulee = lerp(
+		min_distance_simulee,
+		max_distance_simulee,
+		clamp(t, 0.0, 1.0)
+	)
+
+	return position_reelle.normalized() * distance_simulee
+
 
 func donnees_planetes(data: Dictionary) :
 	demi_grand_axe = data["demi_grand_axe"]
@@ -92,7 +105,6 @@ func donnees_planetes(data: Dictionary) :
 func assignation_donnees_planete() -> void:
 	
 	for corps in donnees.DONNEES_CORPS:
-		print("Data :", corps["nom"])
 		if corps["nom"] == self.name:
 			
 			donnees_planetes(corps)
@@ -104,14 +116,28 @@ func assignation_donnees_planete() -> void:
 	
 
 func acceleration(position_reelle: Vector3) -> Vector3:
-	
-	var a = Vector3.ZERO
+	var a := Vector3.ZERO
+
 	for corps in autres_corps:
-		var r_ij = corps.r_i - position_reelle   # vecteur vers l'autre corps, en mètres
-		var dist = r_ij.length()
-		if dist < 1e3:
+		if corps == self:
 			continue
-		a += G * corps.masse / dist**3 * r_ij
+
+		
+		if not ("r_i" in corps and "masse" in corps):
+			continue
+
+
+		if corps.r_i == null:
+			continue
+
+		var r_ij = corps.r_i - position_reelle
+		var dist = r_ij.length()
+
+		if not is_finite(dist) or dist < 1e3:
+			continue
+
+		a += G * corps.masse * r_ij / (dist * dist * dist)
+
 	return a
 
 

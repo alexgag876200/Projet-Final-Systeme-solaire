@@ -22,49 +22,22 @@ Vitesse_rotation = 40.0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1433912278]
 shadow_enabled = true
-sky_mode = 1
 
 [node name="Soleil" parent="." unique_id=1213070534 node_paths=PackedStringArray("autres_corps") instance=ExtResource("1_odjec")]
 script = ExtResource("3_uqj0e")
-autres_corps = [
-    NodePath("../Mercure"),
-    NodePath("../Vénus"),
-    NodePath("../Terre"),
-    NodePath("../Mars"),
-    NodePath("../jupiter"),
-    NodePath("../saturne"),
-    NodePath("../Uranus"),
-    NodePath("../Neptune")
-]
+autres_corps = [NodePath("../Mercure"), NodePath("../Vénus"), NodePath("../Terre"), NodePath("../Mars"), NodePath("../Jupiter"), NodePath("../Saturne"), NodePath("../Uranus"), NodePath("../Neptune")]
+max_distance_simulee = 10.0
 
 [node name="Mercure" parent="." unique_id=1895002169 node_paths=PackedStringArray("autres_corps") instance=ExtResource("2_mtdwt")]
 script = ExtResource("3_uqj0e")
-autres_corps = [
-    NodePath("../Soleil"),
-    NodePath("../Vénus"),
-    NodePath("../Terre"),
-    NodePath("../Mars"),
-    NodePath("../jupiter"),
-    NodePath("../saturne"),
-    NodePath("../Uranus"),
-    NodePath("../Neptune")
-]
+autres_corps = [NodePath("../Soleil"), NodePath("../Vénus"), NodePath("../Terre"), NodePath("../Mars"), NodePath("../Jupiter"), NodePath("../Saturne"), NodePath("../Uranus"), NodePath("../Neptune")]
 min_distance_simulee = 25.0
 max_distance_simulee = 30.0
 max_distance_reelle = 69800000000.0
 
 [node name="Vénus" parent="." unique_id=1275429055 node_paths=PackedStringArray("autres_corps") instance=ExtResource("3_471bu")]
 script = ExtResource("3_uqj0e")
-autres_corps = [
-    NodePath("../Soleil"),
-    NodePath("../Mercure"),
-    NodePath("../Terre"),
-    NodePath("../Mars"),
-    NodePath("../jupiter"),
-    NodePath("../saturne"),
-    NodePath("../Uranus"),
-    NodePath("../Neptune")
-]
+autres_corps = [NodePath("../Soleil"), NodePath("../Mercure"), NodePath("../Terre"), NodePath("../Mars"), NodePath("../Jupiter"), NodePath("../Saturne"), NodePath("../Uranus"), NodePath("../Neptune")]
 min_distance_simulee = 32.0
 max_distance_simulee = 38.0
 min_distance_reelle = 107000000000.0
@@ -72,16 +45,7 @@ max_distance_reelle = 109000000000.0
 
 [node name="Terre" parent="." unique_id=1264067127 node_paths=PackedStringArray("autres_corps") instance=ExtResource("4_uqj0e")]
 script = ExtResource("3_uqj0e")
-autres_corps = [
-    NodePath("../Soleil"),
-    NodePath("../Mercure"),
-    NodePath("../Vénus"),
-    NodePath("../Mars"),
-    NodePath("../jupiter"),
-    NodePath("../saturne"),
-    NodePath("../Uranus"),
-    NodePath("../Neptune")
-]
+autres_corps = [NodePath("../Soleil"), NodePath("../Mercure"), NodePath("../Vénus"), NodePath("../Mars"), NodePath("../Jupiter"), NodePath("../Saturne"), NodePath("../Uranus"), NodePath("../Neptune")]
 min_distance_simulee = 42.0
 max_distance_simulee = 44.0
 min_distance_reelle = 147100000000.0
@@ -89,67 +53,32 @@ max_distance_reelle = 152100000000.0
 
 [node name="Mars" parent="." unique_id=1149372289 node_paths=PackedStringArray("autres_corps") instance=ExtResource("5_fuldb")]
 script = ExtResource("3_uqj0e")
-autres_corps = [
-    NodePath("../Soleil"),
-    NodePath("../Mercure"),
-    NodePath("../Vénus"),
-    NodePath("../Terre"),
-    NodePath("../jupiter"),
-    NodePath("../saturne"),
-    NodePath("../Uranus"),
-    NodePath("../Neptune")
-]
+autres_corps = [NodePath("../Soleil"), NodePath("../Mercure"), NodePath("../Vénus"), NodePath("../Terre"), NodePath("../Jupiter"), NodePath("../Saturne"), NodePath("../Uranus"), NodePath("../Neptune")]
 min_distance_simulee = 47.0
 max_distance_simulee = 52.0
 min_distance_reelle = 206600000000.0
 max_distance_reelle = 242000000000.0
 
-[node name="jupiter" parent="." unique_id=762818665 node_paths=PackedStringArray("autres_corps") instance=ExtResource("6_olkoh")]
+[node name="Jupiter" parent="." unique_id=762818665 node_paths=PackedStringArray("autres_corps") instance=ExtResource("6_olkoh")]
 script = ExtResource("3_uqj0e")
-autres_corps = [
-    NodePath("../Soleil"),
-    NodePath("../Mercure"),
-    NodePath("../Vénus"),
-    NodePath("../Terre"),
-    NodePath("../Mars"),
-    NodePath("../saturne"),
-    NodePath("../Uranus"),
-    NodePath("../Neptune")
-]
+autres_corps = [NodePath("../Soleil"), NodePath("../Mercure"), NodePath("../Vénus"), NodePath("../Terre"), NodePath("../Mars"), NodePath("../Saturne"), NodePath("../Uranus"), NodePath("../Neptune")]
 min_distance_simulee = 57.0
 max_distance_simulee = 67.0
 min_distance_reelle = 740500000000.0
 max_distance_reelle = 816600000000.0
 
-[node name="saturne" parent="." unique_id=1972900681 node_paths=PackedStringArray("autres_corps") instance=ExtResource("7_7rptf")]
+[node name="Saturne" parent="." unique_id=1972900681 node_paths=PackedStringArray("autres_corps") instance=ExtResource("7_7rptf")]
 script = ExtResource("3_uqj0e")
-autres_corps = [
-    NodePath("../Soleil"),
-    NodePath("../Mercure"),
-    NodePath("../Vénus"),
-    NodePath("../Terre"),
-    NodePath("../Mars"),
-    NodePath("../jupiter"),
-    NodePath("../Uranus"),
-    NodePath("../Neptune")
-]
+autres_corps = [NodePath("../Soleil"), NodePath("../Mercure"), NodePath("../Vénus"), NodePath("../Terre"), NodePath("../Mars"), NodePath("../Jupiter"), NodePath("../Uranus"), NodePath("../Neptune")]
 min_distance_simulee = 74.0
 max_distance_simulee = 85.0
 min_distance_reelle = 1352000000000.0
 max_distance_reelle = 1511000000000.0
+etapes_calcul_par_ecran = 1000
 
 [node name="Uranus" parent="." unique_id=981561214 node_paths=PackedStringArray("autres_corps") instance=ExtResource("8_ebwtv")]
 script = ExtResource("3_uqj0e")
-autres_corps = [
-    NodePath("../Soleil"),
-    NodePath("../Mercure"),
-    NodePath("../Vénus"),
-    NodePath("../Terre"),
-    NodePath("../Mars"),
-    NodePath("../jupiter"),
-    NodePath("../saturne"),
-    NodePath("../Neptune")
-]
+autres_corps = [NodePath("../Soleil"), NodePath("../Mercure"), NodePath("../Vénus"), NodePath("../Terre"), NodePath("../Mars"), NodePath("../Jupiter"), NodePath("../Saturne"), NodePath("../Neptune")]
 min_distance_simulee = 95.0
 max_distance_simulee = 105.0
 min_distance_reelle = 2741000000000.0
@@ -157,16 +86,7 @@ max_distance_reelle = 3004000000000.0
 
 [node name="Neptune" parent="." unique_id=1056707836 node_paths=PackedStringArray("autres_corps") instance=ExtResource("9_8r7bp")]
 script = ExtResource("3_uqj0e")
-autres_corps = [
-    NodePath("../Soleil"),
-    NodePath("../Mercure"),
-    NodePath("../Vénus"),
-    NodePath("../Terre"),
-    NodePath("../Mars"),
-    NodePath("../jupiter"),
-    NodePath("../saturne"),
-    NodePath("../Uranus")
-]
+autres_corps = [NodePath("../Soleil"), NodePath("../Mercure"), NodePath("../Vénus"), NodePath("../Terre"), NodePath("../Mars"), NodePath("../Jupiter"), NodePath("../Saturne"), NodePath("../Uranus")]
 min_distance_simulee = 115.0
 max_distance_simulee = 125.0
 min_distance_reelle = 4477000000000.0
