@@ -29,7 +29,6 @@ var temps_rotation_sur_elle_meme: float
 @export var max_distance_reelle: float
 
 @export_group("Paramètre de simulation")
-@export var periode_relative: float = 20.0
 @export var etapes_calcul_par_ecran: int = 50
 
 
@@ -126,10 +125,6 @@ func acceleration(position_reelle: Vector3) -> Vector3:
 		if not ("r_i" in corps and "masse" in corps):
 			continue
 
-
-		if corps.r_i == null:
-			continue
-
 		var r_ij = corps.r_i - position_reelle
 		var dist = r_ij.length()
 
@@ -178,7 +173,7 @@ func runge_kotta(temps_dernier_ecran):
 func _ready() -> void:
 
 	assignation_donnees_planete()
-	periode = periode_orbitale
+	
 	r_i = Vector3(perihelie, 0, 0)
 	v_i = Vector3(0, 0, vitesse_perihelie * 1000.0)
 

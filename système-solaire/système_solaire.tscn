@@ -20,74 +20,106 @@ script = ExtResource("1_mtdwt")
 vitesse = 20.0
 Vitesse_rotation = 40.0
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1433912278]
-shadow_enabled = true
-
 [node name="Soleil" parent="." unique_id=1213070534 node_paths=PackedStringArray("autres_corps") instance=ExtResource("1_odjec")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
 script = ExtResource("3_uqj0e")
 autres_corps = [NodePath("../Mercure"), NodePath("../Vénus"), NodePath("../Terre"), NodePath("../Mars"), NodePath("../Jupiter"), NodePath("../Saturne"), NodePath("../Uranus"), NodePath("../Neptune")]
-max_distance_simulee = 10.0
+min_distance_simulee = 0.0
+max_distance_simulee = 4.0
+min_distance_reelle = 0.0
+max_distance_reelle = 1200000000.0
+periode_relative = 20.0
+etapes_calcul_par_ecran = 50
 
 [node name="Mercure" parent="." unique_id=1895002169 node_paths=PackedStringArray("autres_corps") instance=ExtResource("2_mtdwt")]
+transform = Transform3D(2.2, 0, 0, 0, 2.2, 0, 0, 0, 2.2, 0, 0, 0)
 script = ExtResource("3_uqj0e")
 autres_corps = [NodePath("../Soleil"), NodePath("../Vénus"), NodePath("../Terre"), NodePath("../Mars"), NodePath("../Jupiter"), NodePath("../Saturne"), NodePath("../Uranus"), NodePath("../Neptune")]
 min_distance_simulee = 25.0
 max_distance_simulee = 30.0
+min_distance_reelle = 0.0
 max_distance_reelle = 69800000000.0
+periode_relative = 20.0
+etapes_calcul_par_ecran = 50
 
 [node name="Vénus" parent="." unique_id=1275429055 node_paths=PackedStringArray("autres_corps") instance=ExtResource("3_471bu")]
+transform = Transform3D(2.8, 0, 0, 0, 2.8, 0, 0, 0, 2.8, 0, 0, 0)
 script = ExtResource("3_uqj0e")
 autres_corps = [NodePath("../Soleil"), NodePath("../Mercure"), NodePath("../Terre"), NodePath("../Mars"), NodePath("../Jupiter"), NodePath("../Saturne"), NodePath("../Uranus"), NodePath("../Neptune")]
 min_distance_simulee = 32.0
 max_distance_simulee = 38.0
 min_distance_reelle = 107000000000.0
 max_distance_reelle = 109000000000.0
+periode_relative = 20.0
+etapes_calcul_par_ecran = 50
 
 [node name="Terre" parent="." unique_id=1264067127 node_paths=PackedStringArray("autres_corps") instance=ExtResource("4_uqj0e")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
 script = ExtResource("3_uqj0e")
 autres_corps = [NodePath("../Soleil"), NodePath("../Mercure"), NodePath("../Vénus"), NodePath("../Mars"), NodePath("../Jupiter"), NodePath("../Saturne"), NodePath("../Uranus"), NodePath("../Neptune")]
 min_distance_simulee = 42.0
 max_distance_simulee = 44.0
 min_distance_reelle = 147100000000.0
 max_distance_reelle = 152100000000.0
+periode_relative = 20.0
+etapes_calcul_par_ecran = 50
 
 [node name="Mars" parent="." unique_id=1149372289 node_paths=PackedStringArray("autres_corps") instance=ExtResource("5_fuldb")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, 0)
 script = ExtResource("3_uqj0e")
 autres_corps = [NodePath("../Soleil"), NodePath("../Mercure"), NodePath("../Vénus"), NodePath("../Terre"), NodePath("../Jupiter"), NodePath("../Saturne"), NodePath("../Uranus"), NodePath("../Neptune")]
 min_distance_simulee = 47.0
 max_distance_simulee = 52.0
 min_distance_reelle = 206600000000.0
 max_distance_reelle = 242000000000.0
+periode_relative = 20.0
+etapes_calcul_par_ecran = 50
 
 [node name="Jupiter" parent="." unique_id=762818665 node_paths=PackedStringArray("autres_corps") instance=ExtResource("6_olkoh")]
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, 0, 0, 0)
 script = ExtResource("3_uqj0e")
 autres_corps = [NodePath("../Soleil"), NodePath("../Mercure"), NodePath("../Vénus"), NodePath("../Terre"), NodePath("../Mars"), NodePath("../Saturne"), NodePath("../Uranus"), NodePath("../Neptune")]
 min_distance_simulee = 57.0
 max_distance_simulee = 67.0
 min_distance_reelle = 740500000000.0
 max_distance_reelle = 816600000000.0
+periode_relative = 20.0
+etapes_calcul_par_ecran = 50
 
 [node name="Saturne" parent="." unique_id=1972900681 node_paths=PackedStringArray("autres_corps") instance=ExtResource("7_7rptf")]
+transform = Transform3D(5.5, 0, 0, 0, 5.5, 0, 0, 0, 5.5, 0, 0, 0)
 script = ExtResource("3_uqj0e")
 autres_corps = [NodePath("../Soleil"), NodePath("../Mercure"), NodePath("../Vénus"), NodePath("../Terre"), NodePath("../Mars"), NodePath("../Jupiter"), NodePath("../Uranus"), NodePath("../Neptune")]
 min_distance_simulee = 74.0
 max_distance_simulee = 85.0
 min_distance_reelle = 1352000000000.0
 max_distance_reelle = 1511000000000.0
+periode_relative = 20.0
 etapes_calcul_par_ecran = 1000
 
 [node name="Uranus" parent="." unique_id=981561214 node_paths=PackedStringArray("autres_corps") instance=ExtResource("8_ebwtv")]
+transform = Transform3D(4.5, 0, 0, 0, 4.5, 0, 0, 0, 4.5, 0, 0, 0)
 script = ExtResource("3_uqj0e")
 autres_corps = [NodePath("../Soleil"), NodePath("../Mercure"), NodePath("../Vénus"), NodePath("../Terre"), NodePath("../Mars"), NodePath("../Jupiter"), NodePath("../Saturne"), NodePath("../Neptune")]
 min_distance_simulee = 95.0
 max_distance_simulee = 105.0
 min_distance_reelle = 2741000000000.0
 max_distance_reelle = 3004000000000.0
+periode_relative = 20.0
+etapes_calcul_par_ecran = 50
 
 [node name="Neptune" parent="." unique_id=1056707836 node_paths=PackedStringArray("autres_corps") instance=ExtResource("9_8r7bp")]
+transform = Transform3D(4.4, 0, 0, 0, 4.3978288656092195, -0.1382073399437653, 0, 0.1382073399437653, 4.3978288656092195, 0, 0, 0)
 script = ExtResource("3_uqj0e")
 autres_corps = [NodePath("../Soleil"), NodePath("../Mercure"), NodePath("../Vénus"), NodePath("../Terre"), NodePath("../Mars"), NodePath("../Jupiter"), NodePath("../Saturne"), NodePath("../Uranus")]
 min_distance_simulee = 115.0
 max_distance_simulee = 125.0
 min_distance_reelle = 4477000000000.0
 max_distance_reelle = 4545000000000.0
+periode_relative = 20.0
+etapes_calcul_par_ecran = 50
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1433912278]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 111.40415707906547, 0)
+light_color = Color(1, 0.9529412, 0.7529412, 1)
+shadow_enabled = true
