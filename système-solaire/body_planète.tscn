@@ -4,6 +4,8 @@
 
 [sub_resource type="SphereMesh" id="SphereMesh_y31v6"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y1rhv"]
+
 [sub_resource type="SphereShape3D" id="SphereShape3D_ekr50"]
 
 [node name="BodyPlanète" type="Node3D" unique_id=1213070534]
@@ -14,6 +16,7 @@ vitesse_rotation = 20.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D" unique_id=1113201612]
 mesh = SubResource("SphereMesh_y31v6")
+surface_material_override/0 = SubResource("StandardMaterial3D_y1rhv")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D" unique_id=672887434]
 shape = SubResource("SphereShape3D_ekr50")
