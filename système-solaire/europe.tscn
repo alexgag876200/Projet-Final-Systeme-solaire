@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://bbthm7dbp3ep2"]
+
+[ext_resource type="PackedScene" uid="uid://bj13x5vtxuu14" path="res://body_planète.tscn" id="1_a7ed7"]
+
+[node name="Europe" unique_id=1213070534 instance=ExtResource("1_a7ed7")]

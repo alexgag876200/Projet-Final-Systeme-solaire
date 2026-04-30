@@ -11,6 +11,28 @@
 [ext_resource type="PackedScene" uid="uid://cv40l57e5gc3l" path="res://saturne.tscn" id="7_7rptf"]
 [ext_resource type="PackedScene" uid="uid://ch8o4qugdjd42" path="res://uranus.tscn" id="8_ebwtv"]
 [ext_resource type="PackedScene" uid="uid://dd25o7aj73gsl" path="res://neptune.tscn" id="9_8r7bp"]
+[ext_resource type="PackedScene" uid="uid://l4ttyfm42rtg" path="res://Lune.tscn" id="12_ybikh"]
+[ext_resource type="PackedScene" uid="uid://div1rj738sak4" path="res://io.tscn" id="13_cjf08"]
+[ext_resource type="PackedScene" uid="uid://dr8mqj6f7tq0e" path="res://rhée.tscn" id="14_0panu"]
+[ext_resource type="PackedScene" uid="uid://dqnniman36c87" path="res://ariel.tscn" id="15_m51mb"]
+[ext_resource type="PackedScene" uid="uid://buyi1k3xq7e6x" path="res://dioné.tscn" id="16_srcr1"]
+[ext_resource type="PackedScene" uid="uid://cf3rangk4vxk0" path="res://japet.tscn" id="17_5j541"]
+[ext_resource type="PackedScene" uid="uid://bp2j5hft6m2jx" path="res://mimas.tscn" id="18_vm37j"]
+[ext_resource type="PackedScene" uid="uid://rsjj4r68jpwr" path="res://titan.tscn" id="19_jpkoo"]
+[ext_resource type="PackedScene" uid="uid://vuj2u5liy18t" path="res://déimos.tscn" id="20_cvpal"]
+[ext_resource type="PackedScene" uid="uid://bbthm7dbp3ep2" path="res://europe.tscn" id="21_es1rn"]
+[ext_resource type="PackedScene" uid="uid://jl1ankxuvly4" path="res://obéron.tscn" id="22_skrrq"]
+[ext_resource type="PackedScene" uid="uid://bg8gcg10htuem" path="res://phobos.tscn" id="23_rx3yu"]
+[ext_resource type="PackedScene" uid="uid://bv64jclw5xjhx" path="res://triton.tscn" id="24_da4w3"]
+[ext_resource type="PackedScene" uid="uid://csqdrkct8uy0" path="res://téthys.tscn" id="25_j1ya3"]
+[ext_resource type="PackedScene" uid="uid://d2aubkp7t3ih7" path="res://miranda.tscn" id="26_iik8y"]
+[ext_resource type="PackedScene" uid="uid://c16yw57e7msxy" path="res://titania.tscn" id="27_047bx"]
+[ext_resource type="PackedScene" uid="uid://bq64kra1xowpk" path="res://néréide.tscn" id="28_j0nhd"]
+[ext_resource type="PackedScene" uid="uid://jwf1nyy8g015" path="res://umbriel.tscn" id="29_yryxg"]
+[ext_resource type="PackedScene" uid="uid://cr4u6dso5xawe" path="res://callisto.tscn" id="30_aifcr"]
+[ext_resource type="PackedScene" uid="uid://w7mvyych8qmb" path="res://encelade.tscn" id="31_yali2"]
+[ext_resource type="PackedScene" uid="uid://uyd04fibwxm2" path="res://ganymède.tscn" id="32_rvt17"]
+[ext_resource type="PackedScene" uid="uid://dyausbdhl80lc" path="res://protée.tscn" id="33_g2k30"]
 
 [node name="Node3D" type="Node3D" unique_id=1423429033]
 
@@ -105,3 +127,179 @@ etapes_calcul_par_ecran = 50
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 111.40415707906548, 0)
 light_color = Color(1, 0.9529412, 0.7529412, 1)
 shadow_enabled = true
+
+[node name="Lune" parent="." unique_id=52885133 instance=ExtResource("12_ybikh")]
+script = ExtResource("3_uqj0e")
+min_distance_simulee = 0.0
+max_distance_simulee = 5.0
+min_distance_reelle = 0.0
+max_distance_reelle = 0.0
+etapes_calcul_par_ecran = 50
+
+[node name="Io" parent="." unique_id=421211492 instance=ExtResource("13_cjf08")]
+script = ExtResource("3_uqj0e")
+min_distance_simulee = 0.0
+max_distance_simulee = 5.0
+min_distance_reelle = 0.0
+max_distance_reelle = 0.0
+etapes_calcul_par_ecran = 50
+
+[node name="Rhée" parent="." unique_id=1885101134 instance=ExtResource("14_0panu")]
+script = ExtResource("3_uqj0e")
+min_distance_simulee = 0.0
+max_distance_simulee = 5.0
+min_distance_reelle = 0.0
+max_distance_reelle = 0.0
+etapes_calcul_par_ecran = 50
+
+[node name="Ariel" parent="." unique_id=901021438 instance=ExtResource("15_m51mb")]
+script = ExtResource("3_uqj0e")
+min_distance_simulee = 0.0
+max_distance_simulee = 5.0
+min_distance_reelle = 0.0
+max_distance_reelle = 0.0
+etapes_calcul_par_ecran = 50
+
+[node name="Dioné" parent="." unique_id=1754045789 instance=ExtResource("16_srcr1")]
+script = ExtResource("3_uqj0e")
+min_distance_simulee = 0.0
+max_distance_simulee = 5.0
+min_distance_reelle = 0.0
+max_distance_reelle = 0.0
+etapes_calcul_par_ecran = 50
+
+[node name="Japet" parent="." unique_id=529915185 instance=ExtResource("17_5j541")]
+script = ExtResource("3_uqj0e")
+min_distance_simulee = 0.0
+max_distance_simulee = 5.0
+min_distance_reelle = 0.0
+max_distance_reelle = 0.0
+etapes_calcul_par_ecran = 50
+
+[node name="Mimas" parent="." unique_id=1135177883 instance=ExtResource("18_vm37j")]
+script = ExtResource("3_uqj0e")
+min_distance_simulee = 0.0
+max_distance_simulee = 5.0
+min_distance_reelle = 0.0
+max_distance_reelle = 0.0
+etapes_calcul_par_ecran = 50
+
+[node name="Titan" parent="." unique_id=1182411250 instance=ExtResource("19_jpkoo")]
+script = ExtResource("3_uqj0e")
+min_distance_simulee = 0.0
+max_distance_simulee = 5.0
+min_distance_reelle = 0.0
+max_distance_reelle = 0.0
+etapes_calcul_par_ecran = 50
+
+[node name="Déimos" parent="." unique_id=349647423 instance=ExtResource("20_cvpal")]
+script = ExtResource("3_uqj0e")
+min_distance_simulee = 0.0
+max_distance_simulee = 5.0
+min_distance_reelle = 0.0
+max_distance_reelle = 0.0
+etapes_calcul_par_ecran = 50
+
+[node name="Europe" parent="." unique_id=577623809 instance=ExtResource("21_es1rn")]
+script = ExtResource("3_uqj0e")
+min_distance_simulee = 0.0
+max_distance_simulee = 5.0
+min_distance_reelle = 0.0
+max_distance_reelle = 0.0
+etapes_calcul_par_ecran = 50
+
+[node name="Obéron" parent="." unique_id=1157156744 instance=ExtResource("22_skrrq")]
+script = ExtResource("3_uqj0e")
+min_distance_simulee = 0.0
+max_distance_simulee = 0.0
+min_distance_reelle = 0.0
+max_distance_reelle = 0.0
+etapes_calcul_par_ecran = 50
+
+[node name="Phobos" parent="." unique_id=97194093 instance=ExtResource("23_rx3yu")]
+script = ExtResource("3_uqj0e")
+min_distance_simulee = 0.0
+max_distance_simulee = 0.0
+min_distance_reelle = 0.0
+max_distance_reelle = 0.0
+etapes_calcul_par_ecran = 50
+
+[node name="Triton" parent="." unique_id=355759041 instance=ExtResource("24_da4w3")]
+script = ExtResource("3_uqj0e")
+min_distance_simulee = 0.0
+max_distance_simulee = 0.0
+min_distance_reelle = 0.0
+max_distance_reelle = 0.0
+etapes_calcul_par_ecran = 50
+
+[node name="Téthys" parent="." unique_id=934831194 instance=ExtResource("25_j1ya3")]
+script = ExtResource("3_uqj0e")
+min_distance_simulee = 0.0
+max_distance_simulee = 0.0
+min_distance_reelle = 0.0
+max_distance_reelle = 0.0
+etapes_calcul_par_ecran = 50
+
+[node name="Miranda" parent="." unique_id=1568394079 instance=ExtResource("26_iik8y")]
+script = ExtResource("3_uqj0e")
+min_distance_simulee = 0.0
+max_distance_simulee = 0.0
+min_distance_reelle = 0.0
+max_distance_reelle = 0.0
+etapes_calcul_par_ecran = 50
+
+[node name="Titania" parent="." unique_id=140159150 instance=ExtResource("27_047bx")]
+script = ExtResource("3_uqj0e")
+min_distance_simulee = 0.0
+max_distance_simulee = 0.0
+min_distance_reelle = 0.0
+max_distance_reelle = 0.0
+etapes_calcul_par_ecran = 50
+
+[node name="Néréide" parent="." unique_id=2104324494 instance=ExtResource("28_j0nhd")]
+script = ExtResource("3_uqj0e")
+min_distance_simulee = 0.0
+max_distance_simulee = 0.0
+min_distance_reelle = 0.0
+max_distance_reelle = 0.0
+etapes_calcul_par_ecran = 50
+
+[node name="Umbriel" parent="." unique_id=1048404473 instance=ExtResource("29_yryxg")]
+script = ExtResource("3_uqj0e")
+min_distance_simulee = 0.0
+max_distance_simulee = 0.0
+min_distance_reelle = 0.0
+max_distance_reelle = 0.0
+etapes_calcul_par_ecran = 50
+
+[node name="Callisto" parent="." unique_id=715107927 instance=ExtResource("30_aifcr")]
+script = ExtResource("3_uqj0e")
+min_distance_simulee = 0.0
+max_distance_simulee = 0.0
+min_distance_reelle = 0.0
+max_distance_reelle = 0.0
+etapes_calcul_par_ecran = 50
+
+[node name="Encelade" parent="." unique_id=1261558438 instance=ExtResource("31_yali2")]
+script = ExtResource("3_uqj0e")
+min_distance_simulee = 0.0
+max_distance_simulee = 0.0
+min_distance_reelle = 0.0
+max_distance_reelle = 0.0
+etapes_calcul_par_ecran = 50
+
+[node name="Ganymède" parent="." unique_id=2024615620 instance=ExtResource("32_rvt17")]
+script = ExtResource("3_uqj0e")
+min_distance_simulee = 0.0
+max_distance_simulee = 0.0
+min_distance_reelle = 0.0
+max_distance_reelle = 0.0
+etapes_calcul_par_ecran = 50
+
+[node name="Protée" parent="." unique_id=1409055924 instance=ExtResource("33_g2k30")]
+script = ExtResource("3_uqj0e")
+min_distance_simulee = 0.0
+max_distance_simulee = 0.0
+min_distance_reelle = 0.0
+max_distance_reelle = 0.0
+etapes_calcul_par_ecran = 50

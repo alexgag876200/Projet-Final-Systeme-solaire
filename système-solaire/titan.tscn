@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://rsjj4r68jpwr"]
+
+[ext_resource type="PackedScene" uid="uid://bj13x5vtxuu14" path="res://body_planète.tscn" id="1_y2e3d"]
+
+[node name="Titan" unique_id=1213070534 instance=ExtResource("1_y2e3d")]

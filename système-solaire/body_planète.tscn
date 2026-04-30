@@ -8,7 +8,7 @@
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ekr50"]
 
-[node name="BodyPlanète" type="Node3D" unique_id=1213070534]
+[node name="Lune" type="Node3D" unique_id=1213070534]
 script = ExtResource("1_y1rhv")
 vitesse_rotation = 20.0
 
