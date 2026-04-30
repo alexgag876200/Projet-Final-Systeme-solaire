@@ -16,7 +16,8 @@ var perihelie: float
 var vitesse_perihelie: float
 var periode_orbitale: float 
 var temps_rot_soleil: float
-
+var parent_nom: String
+var parent_node: Node3D
 var masse: float  
 var rayon: float
 var temps_rotation_sur_elle_meme: float
@@ -48,7 +49,6 @@ var k3: Vector3
 var k4: Vector3
 
 var periode : float
-# Called when the node enters the scene tree for the first time.
 
 
 
@@ -62,8 +62,11 @@ func conv_position_reelle_a_simulee(position_reelle : Vector3) -> Vector3:
 	Retour :
 	la position dans le monde de la simulation à utiliser
 	"""
-	
-	
+	"""
+	fonction is _finite est utilisé pour éviter les problématique liées au 
+	au division par 0, au valeurs trop petite et lorsqu'il y a tout simplement pas
+	de valeur pour une certaine donnée. Utilisé comme sécurité
+	"""
 	if not position_reelle.is_finite():
 		return Vector3.ZERO
 
@@ -75,11 +78,7 @@ func conv_position_reelle_a_simulee(position_reelle : Vector3) -> Vector3:
 	if not is_finite(t):
 		t = 0.0
 
-	var distance_simulee = lerp(
-		min_distance_simulee,
-		max_distance_simulee,
-		clamp(t, 0.0, 1.0)
-	)
+	var distance_simulee = lerp(min_distance_simulee,max_distance_simulee,clamp(t, 0.0, 1.0))
 
 	return position_reelle.normalized() * distance_simulee
 
@@ -96,7 +95,7 @@ func donnees_planetes(data: Dictionary) :
 	masse  = data["masse"]
 	rayon  = data["rayon"]
 	temps_rotation_sur_elle_meme  = data["temps_rotation_sur_elle_meme"]
-	
+	parent_nom = data["parent"]
 	
 	
 	
@@ -112,26 +111,19 @@ func assignation_donnees_planete() -> void:
 	
 	
 	
-	
-
 func acceleration(position_reelle: Vector3) -> Vector3:
-	var a := Vector3.ZERO
+	var a :Vector3 = Vector3.ZERO
 
 	for corps in autres_corps:
+		#évite de calculé l'accélération avec le corps lui même
 		if corps == self:
 			continue
-
 		
-		if not ("r_i" in corps and "masse" in corps):
-			continue
-
 		var r_ij = corps.r_i - position_reelle
 		var dist = r_ij.length()
 
-		if not is_finite(dist) or dist < 1e3:
-			continue
-
-		a += G * corps.masse * r_ij / (dist * dist * dist)
+		
+		a += G * corps.masse * r_ij / (dist **3)
 
 	return a
 
@@ -173,10 +165,13 @@ func runge_kotta(temps_dernier_ecran):
 func _ready() -> void:
 
 	assignation_donnees_planete()
-	
+	for corps in autres_corps:
+		if corps.name == parent_nom:
+			parent_node = corps
+			break
 	r_i = Vector3(perihelie, 0, 0)
 	v_i = Vector3(0, 0, vitesse_perihelie * 1000.0)
-
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 
@@ -185,4 +180,4 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	runge_kotta(delta * temps_sec_mois)
-	position = conv_position_reelle_a_simulee(r_i)
+	position = parent_node.position + conv_position_reelle_a_simulee(r_i)
