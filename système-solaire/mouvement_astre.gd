@@ -165,7 +165,9 @@ func runge_kotta(temps_dernier_ecran):
 func _enter_tree():
 	add_to_group("corps")
 	
-	
+signal Donnee_Astre(info)
+
+
 func _ready() -> void:
 	autres_corps = get_tree().get_nodes_in_group("corps")
 	autres_corps.erase(self)
@@ -177,10 +179,17 @@ func _ready() -> void:
 	
 	r_i = Vector3(perihelie, 0, 0)
 	v_i = Vector3(0, 0, vitesse_perihelie * 1000.0)
+
+	# Attendre que l'interface soit chargée
+	await get_tree().process_frame
+	await get_tree().process_frame
 	
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-
+	var interface = get_tree().get_first_node_in_group("interface")
+	if interface:
+		print("Interface trouvée, connexion de : ", name)
+		Donnee_Astre.connect(interface._on_astre_clique)
+	else:
+		print("PROBLÈME : Interface introuvable pour ", name)
 
 
 
@@ -190,3 +199,19 @@ func _process(delta: float) -> void:
 	if parent_node != null:
 		global_position = parent_node.global_position + conv_position_reelle_a_simulee(r_i)
 	
+func emettre_donnees():
+	Donnee_Astre.emit({
+		"nom":                          name,
+		"demi_grand_axe":               demi_grand_axe,
+		"excentricite":                 excentricite,
+		"inclinaison":                  inclinaison,
+		"argument_perihelie":           argument_perihelie,
+		"perihelie":                    perihelie,
+		"vitesse_perihelie":            vitesse_perihelie,
+		"periode_orbitale":             periode_orbitale,
+		"temps_rot_soleil":             temps_rot_soleil,
+		"masse":                        masse,
+		"rayon":                        rayon,
+		"temps_rotation_sur_elle_meme": temps_rotation_sur_elle_meme,
+		"parent":                       parent_nom
+	})

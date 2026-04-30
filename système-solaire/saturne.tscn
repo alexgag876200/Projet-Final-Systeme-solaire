@@ -9,7 +9,6 @@ albedo_color = Color(0.9098039, 0.84705883, 0.65882355, 1)
 
 [node name="RigidBody3D" parent="." index="0" unique_id=399557911]
 transform = Transform3D(1, 0, 0, 0, 0.9990482215818578, -0.043619387365336, 0, 0.043619387365336, 0.9990482215818578, 0, 0, 0)
-vitesse_rotation = 9630.0
 
 [node name="MeshInstance3D" parent="RigidBody3D" index="0" unique_id=1113201612]
 surface_material_override/0 = SubResource("StandardMaterial3D_wh08y")
