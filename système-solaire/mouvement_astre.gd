@@ -4,7 +4,7 @@ extends Node3D
 
 
 
-@export var autres_corps: Array[Node3D]
+var autres_corps: Array[Node]
 
 
 
@@ -162,13 +162,19 @@ func runge_kotta(temps_dernier_ecran):
 		
 		
 		
+func _enter_tree():
+	add_to_group("corps")
+	
+	
 func _ready() -> void:
-
+	autres_corps = get_tree().get_nodes_in_group("corps")
+	autres_corps.erase(self)
 	assignation_donnees_planete()
 	for corps in autres_corps:
 		if corps.name == parent_nom:
 			parent_node = corps
 			break
+	
 	r_i = Vector3(perihelie, 0, 0)
 	v_i = Vector3(0, 0, vitesse_perihelie * 1000.0)
 	
@@ -180,4 +186,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	runge_kotta(delta * temps_sec_mois)
-	position = parent_node.position + conv_position_reelle_a_simulee(r_i)
+	
+	if parent_node != null:
+		global_position = parent_node.global_position + conv_position_reelle_a_simulee(r_i)
+	

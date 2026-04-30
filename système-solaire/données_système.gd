@@ -1,12 +1,13 @@
 extends Node3D
 
+
 class_name donnees
 """
 données fournies par l'intelligence artificielle
 en utilisant la base de données fournie par la NASA
 """
 
-var DONNEES_CORPS := [
+const DONNEES_CORPS := [
 {"nom":"Soleil","parent":"Aucun","demi_grand_axe":0.0,"excentricite":0.0,"inclinaison":0.0,"argument_perihelie":0.0,"perihelie":0.0,"vitesse_perihelie":0.0,"periode_orbitale":0.0,"temps_rot_soleil":609.12,"masse":1.9884e30,"rayon":6.9634e8,"temps_rotation_sur_elle_meme":609.12},
 
 {"nom":"Mercure","parent":"Soleil","demi_grand_axe":57.91e9,"excentricite":0.20563,"inclinaison":7.005,"argument_perihelie":29.124,"perihelie":46.00e9,"vitesse_perihelie":58.98,"periode_orbitale":87.969*86400.0,"temps_rot_soleil":0.0,"masse":3.302e23,"rayon":2.439e6,"temps_rotation_sur_elle_meme":1407.6},
