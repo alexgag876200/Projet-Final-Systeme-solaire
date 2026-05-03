@@ -30,7 +30,7 @@ var temps_rotation_sur_elle_meme: float
 @export var max_distance_reelle: float
 
 @export_group("Paramètre de simulation")
-@export var etapes_calcul_par_ecran: int = 50
+@export var etapes_calcul_par_ecran: int = 10
 
 
 const G: float = 6.673e-11
