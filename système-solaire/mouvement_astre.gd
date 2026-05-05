@@ -175,7 +175,7 @@ func _ready() -> void:
 		if n is Node3D:
 			autres_corps.append(n)
 	autres_corps.erase(self)
-
+	rotate_y(inclinaison)
 	assignation_donnees_planete()
 	initialiser_position_et_vitesse()
 	await get_tree().process_frame
