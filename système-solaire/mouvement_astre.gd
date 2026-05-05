@@ -139,10 +139,16 @@ func initialiser_position_et_vitesse() -> void:
 			r_i = data["position"]
 			v_i = data["vitesse"]
 			return
+func changement_vitesse_lunes() -> void:
+	if identifiaction_lunes() == true:
+		temps_sec_mois = temps_sec_mois *50
+		return
 
-
-
-
+func identifiaction_lunes():
+	for data in donnees.noms_lunes:
+		if data["nom"] == self.name:
+			return true
+	return false
 func runge_kotta(temps_dernier_ecran):
 		#Nombre de période à simuler dans l'écran
 	var dt = temps_dernier_ecran / float(etapes_calcul_par_ecran)
@@ -178,8 +184,10 @@ func _ready() -> void:
 	rotate_y(inclinaison)
 	assignation_donnees_planete()
 	initialiser_position_et_vitesse()
-	await get_tree().process_frame
 	
+	changement_vitesse_lunes()
+	await get_tree().process_frame
+
 
 	min_distance_reelle = demi_grand_axe * (1.0 - excentricite)
 	max_distance_reelle = demi_grand_axe * (1.0 + excentricite)
@@ -188,7 +196,7 @@ func _ready() -> void:
 		if corps.name == parent_nom:
 			parent_node = corps
 			break
-
+		
 	
 
 	var interface = get_tree().get_first_node_in_group("interface")
