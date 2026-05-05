@@ -184,7 +184,6 @@ func _ready() -> void:
 	rotate_y(inclinaison)
 	assignation_donnees_planete()
 	initialiser_position_et_vitesse()
-	
 	changement_vitesse_lunes()
 	await get_tree().process_frame
 

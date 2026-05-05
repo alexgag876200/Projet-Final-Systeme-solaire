@@ -164,6 +164,19 @@ const DONNEES_CORPS := [
 "masse":5.0e19,"rayon":210000.0,"temps_rotation_sur_elle_meme":0.0}
 
 ]
+
+
+"""
+À partir des lunes de Jupiter, la simulation ne parvient plus à reproduire correctement
+le mouvement de certaines lunes. En effet, les vitesses fournies par les données
+barycentriques (référentiel centré sur le Soleil) ne sont pas compatibles avec le
+référentiel utilisé dans la simulation, qui attend des vitesses relatives à la planète
+parente.
+
+Cette incompatibilité provoque des vitesses orbitales incohérentes et empêche certaines
+lunes de se déplacer correctement. Pour contourner ce problème et permettre l’observation
+visuelle du mouvement, des valeurs de vitesse volontairement amplifiées ont été insérées.
+"""
 const position_astre = [
 
 	{"nom": "Soleil",
@@ -276,82 +289,63 @@ const position_astre = [
 	   -8.763410098854596e1
 	)
 },
-
+	
 	# ======================
 	# LUNES DE JUPITER
 	# ======================
 
 	{
-	"nom": "Io",
-	"position": Vector3(
-	   -1.367203251665076e10,
-		7.666746830536211e11,
-	   -2.852090035841882e9
-	),
-	"vitesse": Vector3(
-	   -2.263806041457634e4,
-		1.494887087781140e4,
-		6.683125004022070e2
-	)
-},
+		"nom": "Io",
+		"position": Vector3(
+		   -1.367203251665076e10,
+			7.666746830536211e11,
+		   -2.852090035841882e9
+		),
+		"vitesse": Vector3(1.7334e4, 0.0, 0.0)
+	},
 
 	{
-	"nom": "Europe",
-	"position": Vector3(
-	   -1.468532788993735e10,
-		7.665343104598749e11,
-	   -2.870432267844856e9
-	),
-	"vitesse": Vector3(
-	   -1.516250504184829e4,
-	   -1.331431864102891e4,
-	   -1.143175625135857e2
-	)
-},
+		"nom": "Europe",
+		"position": Vector3(
+		   -1.468532788993735e10,
+			7.665343104598749e11,
+		   -2.870432267844856e9
+		),
+		"vitesse": Vector3(1.3740e4, 0.0, 0.0)
+	},
 
 	{
-	"nom": "Ganymède",
-	"position": Vector3(
-	   -1.308766093645298e10,
-		7.659315553089708e11,
-	   -2.873557347316027e9
-	),
-	"vitesse": Vector3(
-	   -7.980299727555004e3,
-		9.925452508998138e3,
-		7.094107050493337e2
-	)
-},
+		"nom": "Ganymède",
+		"position": Vector3(
+		   -1.308766093645298e10,
+			7.659315553089708e11,
+		   -2.873557347316027e9
+		),
+		"vitesse": Vector3(1.0880e4, 0.0, 0.0)
+	},
 
 	{
-	"nom": "Callisto",
-	"position": Vector3(
-	   -1.370352625743141e10,
-		7.682975980706885e11,
-	   -2.800712422295153e9
-	),
-	"vitesse": Vector3(
-	   -2.130263498077029e4,
-		1.848514137509657e3,
-		2.338653805008385e2
-	)
-},
+		"nom": "Callisto",
+		"position": Vector3(
+		   -1.370352625743141e10,
+			7.682975980706885e11,
+		   -2.800712422295153e9
+		),
+		"vitesse": Vector3(8.200e3, 0.0, 0.0)
+	},
 
 	# ======================
 	# LUNES DE SATURNE
 	# ======================
-{
+
+	{
 		"nom": "Titan",
 		"position": Vector3(
 			5.017917467058342e11,
 			1.260996685644237e12,
 			-4.230524154371518e10
 		),
-		"vitesse": Vector3(
-			-1.317728001619841e4,
-			7.470643050360275e3,
-			-1.346128705245466e3
-		)
+		"vitesse": Vector3(5.570e3, 0.0, 0.0)
 	},
 
 	{
@@ -361,11 +355,7 @@ const position_astre = [
 			1.260276514565203e12,
 			-4.182392267456269e10
 		),
-		"vitesse": Vector3(
-			-7.177780958323636e3,
-			-7.588171554814361e3,
-			5.928224736327691e3
-		)
+		"vitesse": Vector3(1.2640e4, 0.0, 0.0)
 	},
 
 	{
@@ -375,11 +365,7 @@ const position_astre = [
 			1.260392896375774e12,
 			-4.192367048164630e10
 		),
-		"vitesse": Vector3(
-			-1.745603881924340e4,
-			1.430233358596351e4,
-			-4.119981272515169e3
-		)
+		"vitesse": Vector3(1.4280e4, 0.0, 0.0)
 	},
 
 	{
@@ -389,80 +375,128 @@ const position_astre = [
 			1.260270136087623e12,
 			-4.186502659606260e10
 		),
-		"vitesse": Vector3(
-			-8.310082081068867e3,
-			1.350608662155839e4,
-			-4.997711370084700e3
-		)
+		"vitesse": Vector3(1.1350e4, 0.0, 0.0)
 	},
 
 	{
 		"nom": "Dioné",
-		"position": Vector3(5.005344475871005e11, 1.260375492958668e12, -4.186212241741812e10),
-		"vitesse":  Vector3(-1.112178572927122e4, -5.141568318117498e3, 5.020246440098569e3)
+		"position": Vector3(
+			5.005344475871005e11,
+			1.260375492958668e12,
+			-4.186212241741812e10
+		),
+		"vitesse": Vector3(1.0030e4, 0.0, 0.0)
 	},
 
 	{
 		"nom": "Rhéa",
-		"position": Vector3(5.010709827671270e11, 1.260742227317861e12, -4.210796331108266e10),
-		"vitesse":  Vector3(-1.750403970274332e4, 6.255623791143360e3, -2.783686985456812e2)
+		"position": Vector3(
+			5.010709827671270e11,
+			1.260742227317861e12,
+			-4.210796331108266e10
+		),
+		"vitesse": Vector3(8.480e3, 0.0, 0.0)
 	},
 
 	{
 		"nom": "Japet",
-		"position": Vector3(4.980524826999837e11, 1.262544939173432e12, -4.181523730697614e10),
-		"vitesse":  Vector3(-1.141870900351200e4, 1.173187063970883e3, 1.264422773101535e3)
+		"position": Vector3(
+			4.980524826999837e11,
+			1.262544939173432e12,
+			-4.181523730697614e10
+		),
+		"vitesse": Vector3(3.260e3, 0.0, 0.0)
 	},
+
+	# ======================
+	# LUNES D’URANUS
+	# ======================
 
 	{
 		"nom": "Miranda",
-		"position": Vector3(2.389847677447981e12, -1.794824479038412e12, -3.776009175883830e10),
-		"vitesse":  Vector3(-2.526139245720409e3, 6.216372512163788e3, 6.434175353796769e2)
+		"position": Vector3(
+			2.389847677447981e12,
+			-1.794824479038412e12,
+			-3.776009175883830e10
+		),
+		"vitesse": Vector3(6.680e3, 0.0, 0.0)
 	},
 
 	{
 		"nom": "Ariel",
-		"position": Vector3(2.390038591369182e12, -1.794851531851569e12, -3.769520206007409e10),
-		"vitesse":  Vector3(2.129792457430063e3, 4.832284852764186e3, -5.184564796924192e3)
+		"position": Vector3(
+			2.390038591369182e12,
+			-1.794851531851569e12,
+			-3.769520206007409e10
+		),
+		"vitesse": Vector3(5.510e3, 0.0, 0.0)
 	},
 
 	{
 		"nom": "Umbriel",
-		"position": Vector3(2.389957275632482e12, -1.794858606047484e12, -3.787617225402498e10),
-		"vitesse":  Vector3(-2.241062528564211e2, 5.818545432948116e3, -1.802423835110520e3)
+		"position": Vector3(
+			2.389957275632482e12,
+			-1.794858606047484e12,
+			-3.787617225402498e10
+		),
+		"vitesse": Vector3(4.670e3, 0.0, 0.0)
 	},
 
 	{
 		"nom": "Titania",
-		"position": Vector3(2.389989753073999e12, -1.794889697479987e12, -3.804158260770631e10),
-		"vitesse":  Vector3(6.350457907496843e2, 5.711117787347516e3, -1.205224589471795e3)
+		"position": Vector3(
+			2.389989753073999e12,
+			-1.794889697479987e12,
+			-3.804158260770631e10
+		),
+		"vitesse": Vector3(3.640e3, 0.0, 0.0)
 	},
 
 	{
 		"nom": "Obéron",
-		"position": Vector3(2.389569767167663e12, -1.794812194579669e12, -3.813699744986379e10),
-		"vitesse":  Vector3(1.397822495090637e3, 5.917705513037687e3, 1.490955434902455e3)
+		"position": Vector3(
+			2.389569767167663e12,
+			-1.794812194579669e12,
+			-3.813699744986379e10
+		),
+		"vitesse": Vector3(3.150e3, 0.0, 0.0)
 	},
+
+	# ======================
+	# LUNES DE NEPTUNE
+	# ======================
 
 	{
 		"nom": "Triton",
-		"position": Vector3(2.747300737118617e12, -3.567830621278091e12, 1.042701696055651e10),
-		"vitesse":  Vector3(8.069089112591126e3, 5.445571395028919e3, -8.271258236976937e2)
+		"position": Vector3(
+			2.747300737118617e12,
+			-3.567830621278091e12,
+			1.042701696055651e10
+		),
+		"vitesse": Vector3(-4.390e3, 0.0, 0.0) # rétrograde
 	},
 
 	{
 		"nom": "Néréide",
-		"position": Vector3(2.751567846590003e12, -3.560467619752304e12, 1.091401648211026e10),
-		"vitesse":  Vector3(4.024889524552468e3, 3.867820431362029e3, -1.464909402684327e2)
+		"position": Vector3(
+			2.751567846590003e12,
+			-3.560467619752304e12,
+			1.091401648211026e10
+		),
+		"vitesse": Vector3(1.150e3, 0.0, 0.0)
 	},
 
 	{
 		"nom": "Protée",
-		"position": Vector3(2.747485976939874e12, -3.568023542997373e12, 1.012699894204664e10),
-		"vitesse":  Vector3(3.325508598817522e3, 1.031093890069681e4, 2.787751279132464e3)
+		"position": Vector3(
+			2.747485976939874e12,
+			-3.568023542997373e12,
+			1.012699894204664e10
+		),
+		"vitesse": Vector3(7.600e3, 0.0, 0.0)
 	}
-	
 ]
+
 const noms_lunes = [
 	{"nom": "Lune"},
 
