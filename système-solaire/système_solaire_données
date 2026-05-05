@@ -1,0 +1,47 @@
+from skyfield.api import load, wgs84
+
+ts = load.timescale()
+t = ts.utc(2001, 9, 11)
+
+# Horizons online
+from skyfield.api import Horizons
+
+astres = {
+    'sun': '10',
+    'mercury': '199',
+    'venus': '299',
+    'earth': '399',
+    'moon': '301',
+    'mars': '499',
+    'phobos': '401',
+    'deimos': '402',
+    'jupiter': '599',
+    'io': '501',
+    'europa': '502',
+    'ganymede': '503',
+    'callisto': '504',
+    'saturn': '699',
+    'titan': '606',
+    'enceladus': '612',
+    'mimas': '601',
+    'tethys': '603',
+    'dione': '604',
+    'rhea': '605',
+    'iapetus': '608',
+    'uranus': '799',
+    'neptune': '899',
+    'triton': '801',
+    'nereid': '802'
+}
+
+for name, code in astres.items():
+    obj = Horizons(id=code, location='@sun', epochs=t.tt)
+    eph = obj.vectors()
+
+    pos = eph.position.au
+    vel = eph.velocity.au_per_d
+
+    print(name)
+    print("position (AU):", pos)
+    print("vitesse (AU/day):", vel)
+    print()

@@ -45,64 +45,64 @@ Vitesse_rotation = 40.0
 [node name="Soleil" parent="." unique_id=1213070534 instance=ExtResource("1_odjec")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
 script = ExtResource("3_uqj0e")
-min_distance_simulee = 0.0
-max_distance_simulee = 5.0
+min_distance_simulee = null
+max_distance_simulee = 4.0
 etapes_calcul_par_ecran = 50
 
 [node name="Mercure" parent="." unique_id=1895002169 instance=ExtResource("2_mtdwt")]
 transform = Transform3D(2.2, 0, 0, 0, 2.2, 0, 0, 0, 2.2, 0, 0, 0)
 script = ExtResource("3_uqj0e")
-min_distance_simulee = 5.0
-max_distance_simulee = 8.0
+min_distance_simulee = 25.0
+max_distance_simulee = 30.0
 etapes_calcul_par_ecran = 50
 
 [node name="Vénus" parent="." unique_id=1275429055 instance=ExtResource("3_471bu")]
 transform = Transform3D(2.8, 0, 0, 0, 2.8, 0, 0, 0, 2.8, 0, 0, 0)
 script = ExtResource("3_uqj0e")
-min_distance_simulee = 12.0
-max_distance_simulee = 16.0
+min_distance_simulee = 32.0
+max_distance_simulee = 38.0
 etapes_calcul_par_ecran = 50
 
 [node name="Terre" parent="." unique_id=1264067127 instance=ExtResource("4_uqj0e")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
 script = ExtResource("3_uqj0e")
-min_distance_simulee = 20.0
-max_distance_simulee = 25.0
+min_distance_simulee = 42.0
+max_distance_simulee = 44.0
 etapes_calcul_par_ecran = 50
 
 [node name="Mars" parent="." unique_id=1149372289 instance=ExtResource("5_fuldb")]
 transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, 0)
 script = ExtResource("3_uqj0e")
-min_distance_simulee = 30.0
-max_distance_simulee = 36.0
+min_distance_simulee = 47.0
+max_distance_simulee = 52.0
 etapes_calcul_par_ecran = 50
 
 [node name="Jupiter" parent="." unique_id=762818665 instance=ExtResource("6_olkoh")]
 transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, 0, 0, 0)
 script = ExtResource("3_uqj0e")
-min_distance_simulee = 55.0
-max_distance_simulee = 65.0
+min_distance_simulee = 57.0
+max_distance_simulee = 67.0
 etapes_calcul_par_ecran = 50
 
 [node name="Saturne" parent="." unique_id=1972900681 instance=ExtResource("7_7rptf")]
 transform = Transform3D(5.5, 0, 0, 0, 5.5, 0, 0, 0, 5.5, 0, 0, 0)
 script = ExtResource("3_uqj0e")
-min_distance_simulee = 80.0
-max_distance_simulee = 95.0
+min_distance_simulee = 74.0
+max_distance_simulee = 85.0
 etapes_calcul_par_ecran = 50
 
 [node name="Uranus" parent="." unique_id=981561214 instance=ExtResource("8_ebwtv")]
 transform = Transform3D(4.5, 0, 0, 0, 4.5, 0, 0, 0, 4.5, 0, 0, 0)
 script = ExtResource("3_uqj0e")
-min_distance_simulee = 110.0
-max_distance_simulee = 130.0
+min_distance_simulee = 95.0
+max_distance_simulee = 105.0
 etapes_calcul_par_ecran = 50
 
 [node name="Neptune" parent="." unique_id=1056707836 instance=ExtResource("9_8r7bp")]
 transform = Transform3D(4.4, 0, 0, 0, 4.3978288656092195, -0.1382073399437653, 0, 0.1382073399437653, 4.3978288656092195, 0, 0, 0)
 script = ExtResource("3_uqj0e")
-min_distance_simulee = 150.0
-max_distance_simulee = 180.0
+min_distance_simulee = 115.0
+max_distance_simulee = 125.0
 etapes_calcul_par_ecran = 50
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1433912278]
@@ -112,132 +112,132 @@ shadow_enabled = true
 
 [node name="Lune" parent="." unique_id=52885133 instance=ExtResource("12_ybikh")]
 script = ExtResource("3_uqj0e")
-min_distance_simulee = 0.0
-max_distance_simulee = 0.0
+min_distance_simulee = null
+max_distance_simulee = 5.0
 etapes_calcul_par_ecran = 50
 
 [node name="Io" parent="." unique_id=421211492 instance=ExtResource("13_cjf08")]
 script = ExtResource("3_uqj0e")
-min_distance_simulee = 0.0
-max_distance_simulee = 0.0
+min_distance_simulee = null
+max_distance_simulee = 5.0
 etapes_calcul_par_ecran = 50
 
 [node name="Rhée" parent="." unique_id=1885101134 instance=ExtResource("14_0panu")]
 script = ExtResource("3_uqj0e")
-min_distance_simulee = 0.0
-max_distance_simulee = 0.0
+min_distance_simulee = null
+max_distance_simulee = 5.0
 etapes_calcul_par_ecran = 50
 
 [node name="Ariel" parent="." unique_id=901021438 instance=ExtResource("15_m51mb")]
 script = ExtResource("3_uqj0e")
-min_distance_simulee = 0.0
-max_distance_simulee = 0.0
+min_distance_simulee = null
+max_distance_simulee = 5.0
 etapes_calcul_par_ecran = 50
 
 [node name="Dioné" parent="." unique_id=1754045789 instance=ExtResource("16_srcr1")]
 script = ExtResource("3_uqj0e")
-min_distance_simulee = 0.0
-max_distance_simulee = 0.0
+min_distance_simulee = null
+max_distance_simulee = 5.0
 etapes_calcul_par_ecran = 50
 
 [node name="Japet" parent="." unique_id=529915185 instance=ExtResource("17_5j541")]
 script = ExtResource("3_uqj0e")
-min_distance_simulee = 0.0
-max_distance_simulee = 0.0
+min_distance_simulee = null
+max_distance_simulee = 5.0
 etapes_calcul_par_ecran = 50
 
 [node name="Mimas" parent="." unique_id=1135177883 instance=ExtResource("18_vm37j")]
 script = ExtResource("3_uqj0e")
-min_distance_simulee = 0.0
-max_distance_simulee = 0.0
+min_distance_simulee = null
+max_distance_simulee = 5.0
 etapes_calcul_par_ecran = 50
 
 [node name="Titan" parent="." unique_id=1182411250 instance=ExtResource("19_jpkoo")]
 script = ExtResource("3_uqj0e")
-min_distance_simulee = 0.0
-max_distance_simulee = 0.0
+min_distance_simulee = null
+max_distance_simulee = 5.0
 etapes_calcul_par_ecran = 50
 
 [node name="Déimos" parent="." unique_id=349647423 instance=ExtResource("20_cvpal")]
 script = ExtResource("3_uqj0e")
-min_distance_simulee = 0.0
-max_distance_simulee = 0.0
+min_distance_simulee = null
+max_distance_simulee = 5.0
 etapes_calcul_par_ecran = 50
 
 [node name="Europe" parent="." unique_id=577623809 instance=ExtResource("21_es1rn")]
 script = ExtResource("3_uqj0e")
-min_distance_simulee = 0.0
-max_distance_simulee = 0.0
+min_distance_simulee = null
+max_distance_simulee = 5.0
 etapes_calcul_par_ecran = 50
 
 [node name="Obéron" parent="." unique_id=1157156744 instance=ExtResource("22_skrrq")]
 script = ExtResource("3_uqj0e")
-min_distance_simulee = 0.0
-max_distance_simulee = 0.0
+min_distance_simulee = null
+max_distance_simulee = null
 etapes_calcul_par_ecran = 50
 
 [node name="Phobos" parent="." unique_id=97194093 instance=ExtResource("23_rx3yu")]
 script = ExtResource("3_uqj0e")
-min_distance_simulee = 0.0
-max_distance_simulee = 0.0
+min_distance_simulee = null
+max_distance_simulee = 5.0
 etapes_calcul_par_ecran = 50
 
 [node name="Triton" parent="." unique_id=355759041 instance=ExtResource("24_da4w3")]
 script = ExtResource("3_uqj0e")
-min_distance_simulee = 0.0
-max_distance_simulee = 0.0
+min_distance_simulee = null
+max_distance_simulee = 5.0
 etapes_calcul_par_ecran = 50
 
 [node name="Téthys" parent="." unique_id=934831194 instance=ExtResource("25_j1ya3")]
 script = ExtResource("3_uqj0e")
-min_distance_simulee = 0.0
-max_distance_simulee = 0.0
+min_distance_simulee = null
+max_distance_simulee = 5.0
 etapes_calcul_par_ecran = 50
 
 [node name="Miranda" parent="." unique_id=1568394079 instance=ExtResource("26_iik8y")]
 script = ExtResource("3_uqj0e")
-min_distance_simulee = 0.0
-max_distance_simulee = 0.0
+min_distance_simulee = null
+max_distance_simulee = 5.0
 etapes_calcul_par_ecran = 50
 
 [node name="Titania" parent="." unique_id=140159150 instance=ExtResource("27_047bx")]
 script = ExtResource("3_uqj0e")
-min_distance_simulee = 0.0
-max_distance_simulee = 0.0
+min_distance_simulee = null
+max_distance_simulee = 5.0
 etapes_calcul_par_ecran = 50
 
 [node name="Néréide" parent="." unique_id=2104324494 instance=ExtResource("28_j0nhd")]
 script = ExtResource("3_uqj0e")
-min_distance_simulee = 0.0
-max_distance_simulee = 0.0
+min_distance_simulee = null
+max_distance_simulee = 5.0
 etapes_calcul_par_ecran = 50
 
 [node name="Umbriel" parent="." unique_id=1048404473 instance=ExtResource("29_yryxg")]
 script = ExtResource("3_uqj0e")
-min_distance_simulee = 0.0
-max_distance_simulee = 0.0
+min_distance_simulee = null
+max_distance_simulee = 5.0
 etapes_calcul_par_ecran = 50
 
 [node name="Callisto" parent="." unique_id=715107927 instance=ExtResource("30_aifcr")]
 script = ExtResource("3_uqj0e")
-min_distance_simulee = 0.0
-max_distance_simulee = 0.0
+min_distance_simulee = null
+max_distance_simulee = 5.0
 etapes_calcul_par_ecran = 50
 
 [node name="Encelade" parent="." unique_id=1261558438 instance=ExtResource("31_yali2")]
 script = ExtResource("3_uqj0e")
-min_distance_simulee = 0.0
-max_distance_simulee = 0.0
+min_distance_simulee = null
+max_distance_simulee = 5.0
 etapes_calcul_par_ecran = 50
 
 [node name="Ganymède" parent="." unique_id=2024615620 instance=ExtResource("32_rvt17")]
 script = ExtResource("3_uqj0e")
-min_distance_simulee = 0.0
-max_distance_simulee = 0.0
+min_distance_simulee = null
+max_distance_simulee = 5.0
 etapes_calcul_par_ecran = 50
 
 [node name="Protée" parent="." unique_id=1409055924 instance=ExtResource("33_g2k30")]
 script = ExtResource("3_uqj0e")
-min_distance_simulee = 0.0
-max_distance_simulee = 0.0
+min_distance_simulee = null
+max_distance_simulee = 5.0
 etapes_calcul_par_ecran = 50

@@ -2,9 +2,7 @@ extends Node3D
 
 
 
-
-
-var autres_corps: Array[Node]
+var autres_corps: Array[Node3D]
 
 
 
@@ -21,13 +19,13 @@ var parent_node: Node3D
 var masse: float  
 var rayon: float
 var temps_rotation_sur_elle_meme: float
-
+var m_parent
 
 @export_group("Paramètre de conversion simulation")
 @export var min_distance_simulee: float
 @export var max_distance_simulee: float
-@export var min_distance_reelle: float
-@export var max_distance_reelle: float
+var min_distance_reelle: float
+var max_distance_reelle: float
 
 @export_group("Paramètre de simulation")
 @export var etapes_calcul_par_ecran: int = 10
@@ -36,8 +34,8 @@ var temps_rotation_sur_elle_meme: float
 const G: float = 6.673e-11
 
 var distance_entre_astre: Vector3
-var r_i: Vector3
-var v_i: Vector3
+var r_i: Vector3 = Vector3.ZERO
+var v_i: Vector3 = Vector3.ZERO
 var a_i: Vector3
 
 
@@ -96,9 +94,18 @@ func donnees_planetes(data: Dictionary) :
 	rayon  = data["rayon"]
 	temps_rotation_sur_elle_meme  = data["temps_rotation_sur_elle_meme"]
 	parent_nom = data["parent"]
+	m_parent = data["masse_parent"]
 	
-	
-	
+	# Si pas de parent (ex : Soleil), on arrête là
+	if m_parent == null:
+		return
+
+	# Calcul automatique si valeurs manquantes
+	if perihelie == 0.0:
+		perihelie = demi_grand_axe * (1.0 - excentricite)
+
+	if vitesse_perihelie == 0.0:
+		vitesse_perihelie = sqrt(G * m_parent * (1.0 + excentricite) / perihelie)
 
 func assignation_donnees_planete() -> void:
 	
@@ -108,9 +115,7 @@ func assignation_donnees_planete() -> void:
 			donnees_planetes(corps)
 			return
 
-	
-	
-	
+
 func acceleration(position_reelle: Vector3) -> Vector3:
 	var a :Vector3 = Vector3.ZERO
 
@@ -121,13 +126,19 @@ func acceleration(position_reelle: Vector3) -> Vector3:
 		
 		var r_ij = corps.r_i - position_reelle
 		var dist = r_ij.length()
-
+		if dist < 1.0:   # ← sécurité anti division par zéro
+			continue
 		
 		a += G * corps.masse * r_ij / (dist **3)
 
 	return a
 
-
+func initialiser_position_et_vitesse() -> void:
+	for data in donnees.position_astre:
+		if data["nom"] == self.name:
+			r_i = data["position"]
+			v_i = data["vitesse"]
+			return
 
 
 
@@ -157,48 +168,43 @@ func runge_kotta(temps_dernier_ecran):
 		r_i += (dt / 6.0) * (k1_r + 2.0*k2_r + 2.0*k3_r + k4_r)
 		v_i += (dt / 6.0) * (k1_v + 2.0*k2_v + 2.0*k3_v + k4_v)
 		
-		
-		
-		
-		
-		
+
+func _ready() -> void:
+	autres_corps = []
+	for n in get_tree().get_nodes_in_group("corps"):
+		if n is Node3D:
+			autres_corps.append(n)
+	autres_corps.erase(self)
+
+	assignation_donnees_planete()
+	initialiser_position_et_vitesse()
+	await get_tree().process_frame
+	
+
+	min_distance_reelle = demi_grand_axe * (1.0 - excentricite)
+	max_distance_reelle = demi_grand_axe * (1.0 + excentricite)
+
+	for corps in autres_corps:
+		if corps.name == parent_nom:
+			parent_node = corps
+			break
+
+	
+
+	var interface = get_tree().get_first_node_in_group("interface")
+	if interface:
+		Donnee_Astre.connect(interface._on_astre_clique)
+func _process(delta: float) -> void:
+	runge_kotta(delta * temps_sec_mois)
+	if parent_node != null:
+		global_position = parent_node.global_position + conv_position_reelle_a_simulee(r_i)
+
+
 func _enter_tree():
 	add_to_group("corps")
 	
 signal Donnee_Astre(info)
 
-
-func _ready() -> void:
-	autres_corps = get_tree().get_nodes_in_group("corps")
-	autres_corps.erase(self)
-	assignation_donnees_planete()
-	for corps in autres_corps:
-		if corps.name == parent_nom:
-			parent_node = corps
-			break
-	
-	r_i = Vector3(perihelie, 0, 0)
-	v_i = Vector3(0, 0, vitesse_perihelie * 1000.0)
-
-	# Attendre que l'interface soit chargée
-	await get_tree().process_frame
-	await get_tree().process_frame
-	
-	var interface = get_tree().get_first_node_in_group("interface")
-	if interface:
-		print("Interface trouvée, connexion de : ", name)
-		Donnee_Astre.connect(interface._on_astre_clique)
-	else:
-		print("PROBLÈME : Interface introuvable pour ", name)
-
-
-
-func _process(delta: float) -> void:
-	runge_kotta(delta * temps_sec_mois)
-	
-	if parent_node != null:
-		global_position = parent_node.global_position + conv_position_reelle_a_simulee(r_i)
-	
 func emettre_donnees():
 	Donnee_Astre.emit({
 		"nom":                          name,
@@ -215,3 +221,5 @@ func emettre_donnees():
 		"temps_rotation_sur_elle_meme": temps_rotation_sur_elle_meme,
 		"parent":                       parent_nom
 	})
+	
+	

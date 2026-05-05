@@ -15,6 +15,10 @@ run/main_scene="uid://chd5iyxkdedr7"
 config/features=PackedStringArray("4.7", "Double Precision", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Donn_esSyst_me="*uid://cdt61662gsabj"
+
 [input]
 
 pause={
