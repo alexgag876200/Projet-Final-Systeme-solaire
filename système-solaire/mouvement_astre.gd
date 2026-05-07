@@ -141,7 +141,7 @@ func initialiser_position_et_vitesse() -> void:
 			return
 func changement_vitesse_lunes() -> void:
 	if identifiaction_lunes() == true:
-		temps_sec_mois = temps_sec_mois *50
+		temps_sec_mois = temps_sec_mois * 50.0
 		return
 
 func identifiaction_lunes():

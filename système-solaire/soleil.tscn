@@ -7,8 +7,12 @@ albedo_color = Color(1, 1, 0, 1)
 
 [node name="Soleil" unique_id=1213070534 instance=ExtResource("1_r1vuo")]
 
-[node name="RigidBody3D" parent="." index="0" unique_id=399557911]
-vitesse_rotation = 1997.0
-
-[node name="MeshInstance3D" parent="RigidBody3D" index="0" unique_id=1113201612]
+[node name="MeshInstance3D" parent="RigidBody3D" parent_id_path=PackedInt32Array(399557911) index="0" unique_id=1113201612]
 surface_material_override/0 = SubResource("StandardMaterial3D_usdec")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="RigidBody3D/MeshInstance3D" index="0" unique_id=1852257692]
+top_level = true
+visibility_parent = NodePath("..")
+layers = 1023
+omni_range = 4096.0
+omni_attenuation = 0.0

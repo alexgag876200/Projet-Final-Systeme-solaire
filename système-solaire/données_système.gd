@@ -6,7 +6,7 @@ class_name donnees
 données fournies par l'intelligence artificielle
 en utilisant la base de données fournie par la NASA
 """
-const DONNEES_CORPS := [
+const DONNEES_CORPS = [
 
 {"nom":"Soleil","parent":"Aucun","masse_parent":0.0,
 "demi_grand_axe":0.0,"excentricite":0.0,"inclinaison":0.0,"argument_perihelie":0.0,
@@ -166,17 +166,7 @@ const DONNEES_CORPS := [
 ]
 
 
-"""
-À partir des lunes de Jupiter, la simulation ne parvient plus à reproduire correctement
-le mouvement de certaines lunes. En effet, les vitesses fournies par les données
-barycentriques (référentiel centré sur le Soleil) ne sont pas compatibles avec le
-référentiel utilisé dans la simulation, qui attend des vitesses relatives à la planète
-parente.
 
-Cette incompatibilité provoque des vitesses orbitales incohérentes et empêche certaines
-lunes de se déplacer correctement. Pour contourner ce problème et permettre l’observation
-visuelle du mouvement, des valeurs de vitesse volontairement amplifiées ont été insérées.
-"""
 const position_astre = [
 
 	{"nom": "Soleil",
