@@ -1,5 +1,5 @@
 extends Node3D
-
+class_name Astre
 
 
 var autres_corps: Array[Node3D]
@@ -48,7 +48,7 @@ var k4: Vector3
 
 var periode : float
 
-
+@export var inter: Interface
 
 func conv_position_reelle_a_simulee(position_reelle : Vector3) -> Vector3:
 	"""Effectue la conversion d'une position réelle à une position de l'espace 
@@ -196,13 +196,23 @@ func _ready() -> void:
 			parent_node = corps
 			break
 		
-	
+	interface_node = get_tree().get_first_node_in_group("interface")
+	if interface_node != null:
+		# connexion au signal slider_changed si présent
+		if interface_node.has_signal("slider_changed"):
+			interface_node.connect("slider_changed", Callable(self, "_on_slider_changed"))
+		# connexion du signal d'émission de données vers l'interface (si méthode présente)
+		if interface_node.has_method("_on_astre_clique"):
+			connect("Donnee_Astre", interface_node, "_on_astre_clique")
+	else:
+		print("Astre: interface non trouvée dans le groupe 'interface'")
 
 	var interface = get_tree().get_first_node_in_group("interface")
 	if interface:
 		Donnee_Astre.connect(interface._on_astre_clique)
 func _process(delta: float) -> void:
-	runge_kotta(delta * temps_sec_mois)
+	var vitesse_simu = inter.slide_value()
+	runge_kotta(delta * temps_sec_mois* vitesse_simu)
 	if parent_node != null:
 		global_position = parent_node.global_position + conv_position_reelle_a_simulee(r_i)
 
@@ -229,4 +239,5 @@ func emettre_donnees():
 		"parent":                       parent_nom
 	})
 	
-	
+func emettre_slide():
+	pass

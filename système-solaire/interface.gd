@@ -1,4 +1,5 @@
 extends Control
+
 class_name Interface
 
 @export_group("Connection avec les autres noeuds et script") 
@@ -9,12 +10,14 @@ class_name Interface
 @export var label_excentricite: Label
 @export var label_periode_soleil: Label
 @export var label_periode_astre: Label
+@export var astre: Astre
 
 var slider: float
 
 func _ready() -> void:
-	add_to_group("interface")  # ← ajoute cette ligne
-	slider_vitesse.value = 3
+	add_to_group("interface")
+	slider_vitesse.value = 1
+	slider_vitesse.value_changed.connect(changement)
 	
 func _process(_delta: float) -> void:
 	pass
@@ -26,6 +29,9 @@ func _on_astre_clique(infos: Dictionary) -> void:
 	label_excentricite.text = "Excentricité : %.4f"   % infos["excentricite"]
 	label_periode_soleil.text = "Rot. Soleil : %.2f j" % infos["temps_rot_soleil"]
 	label_periode_astre.text  = "Période : %.2f j"    % infos["periode_orbitale"]
+
+func changement(value:float):
+	astre.vitesse_simulation = slider_vitesse.value
 
 func slide_value() -> float:
 	slider = slider_vitesse.value

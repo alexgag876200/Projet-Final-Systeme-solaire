@@ -82,8 +82,8 @@ layout_mode = 2
 
 [node name="HSlider" type="HSlider" parent="VBoxContainer/Control/VBoxContainer/MarginContainer/HBoxContainer" unique_id=1711873073]
 layout_mode = 2
-max_value = 10.0
-value = 5.0
+max_value = 120.0
+value = 1.0
 
 [node name="Affichage" type="VBoxContainer" parent="VBoxContainer" unique_id=1362829880]
 layout_mode = 2
