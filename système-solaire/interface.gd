@@ -19,6 +19,9 @@ func _ready() -> void:
 	add_to_group("interface")
 	slider_vitesse.value = 1
 	slider_vitesse.value_changed.connect(changement)
+	for node in get_tree().get_nodes_in_group("corps"):
+		if node.has_signal("infos_vers_interface"):
+			node.connect("infos_vers_interface", Callable(self, "_on_astre_clique"))
 	
 func _process(_delta: float) -> void:
 	pass
@@ -48,3 +51,97 @@ func format_scientifique(valeur: float) -> String:
 	var exposant = int(floor(log(valeur) / log(10)))
 	var mantisse = valeur / pow(10, exposant)
 	return signe + "%.3f" % mantisse + "e" + "%d" % exposant
+
+
+
+
+
+
+func _on_soleil_infos_astre(infos: Dictionary) -> void:
+	label_nom.text          = "Nom : %s"              % infos["nom"]
+	label_masse.text        = "Masse : %s kg"         % format_scientifique(infos["masse"])
+	label_v_peri.text       = "V. périhélie : %s km/s" % format_scientifique(infos["vitesse_perihelie"])
+	label_excentricite.text = "Excentricité : %.4f"   % infos["excentricite"]
+	label_periode_soleil.text = "Rot. Soleil : %.2f j" % infos["temps_rot_soleil"]
+	label_periode_astre.text  = "Période : %.2f j"    % infos["periode_orbitale"]
+
+
+func _on_jupiter_donnee_astre(infos: Dictionary) -> void:
+	label_nom.text          = "Nom : %s"              % infos["nom"]
+	label_masse.text        = "Masse : %s kg"         % format_scientifique(infos["masse"])
+	label_v_peri.text       = "V. périhélie : %s km/s" % format_scientifique(infos["vitesse_perihelie"])
+	label_excentricite.text = "Excentricité : %.4f"   % infos["excentricite"]
+	label_periode_soleil.text = "Rot. Soleil : %.2f j" % infos["temps_rot_soleil"]
+	label_periode_astre.text  = "Période : %.2f j"    % infos["periode_orbitale"]
+
+
+func _on_mars_donnee_astre(infos: Dictionary) -> void:
+	label_nom.text          = "Nom : %s"              % infos["nom"]
+	label_masse.text        = "Masse : %s kg"         % format_scientifique(infos["masse"])
+	label_v_peri.text       = "V. périhélie : %s km/s" % format_scientifique(infos["vitesse_perihelie"])
+	label_excentricite.text = "Excentricité : %.4f"   % infos["excentricite"]
+	label_periode_soleil.text = "Rot. Soleil : %.2f j" % infos["temps_rot_soleil"]
+	label_periode_astre.text  = "Période : %.2f j"    % infos["periode_orbitale"]
+
+
+func _on_mercure_donnee_astre(infos: Dictionary) -> void:
+	label_nom.text          = "Nom : %s"              % infos["nom"]
+	label_masse.text        = "Masse : %s kg"         % format_scientifique(infos["masse"])
+	label_v_peri.text       = "V. périhélie : %s km/s" % format_scientifique(infos["vitesse_perihelie"])
+	label_excentricite.text = "Excentricité : %.4f"   % infos["excentricite"]
+	label_periode_soleil.text = "Rot. Soleil : %.2f j" % infos["temps_rot_soleil"]
+	label_periode_astre.text  = "Période : %.2f j"    % infos["periode_orbitale"]
+
+
+func _on_neptune_donnee_astre(infos: Dictionary) -> void:
+	label_nom.text          = "Nom : %s"              % infos["nom"]
+	label_masse.text        = "Masse : %s kg"         % format_scientifique(infos["masse"])
+	label_v_peri.text       = "V. périhélie : %s km/s" % format_scientifique(infos["vitesse_perihelie"])
+	label_excentricite.text = "Excentricité : %.4f"   % infos["excentricite"]
+	label_periode_soleil.text = "Rot. Soleil : %.2f j" % infos["temps_rot_soleil"]
+	label_periode_astre.text  = "Période : %.2f j"    % infos["periode_orbitale"]
+
+
+func _on_saturne_donnee_astre(infos: Dictionary) -> void:
+	label_nom.text          = "Nom : %s"              % infos["nom"]
+	label_masse.text        = "Masse : %s kg"         % format_scientifique(infos["masse"])
+	label_v_peri.text       = "V. périhélie : %s km/s" % format_scientifique(infos["vitesse_perihelie"])
+	label_excentricite.text = "Excentricité : %.4f"   % infos["excentricite"]
+	label_periode_soleil.text = "Rot. Soleil : %.2f j" % infos["temps_rot_soleil"]
+	label_periode_astre.text  = "Période : %.2f j"    % infos["periode_orbitale"]
+
+
+func _on_lune_donnee_astre(infos: Dictionary) -> void:
+	label_nom.text          = "Nom : %s"              % infos["nom"]
+	label_masse.text        = "Masse : %s kg"         % format_scientifique(infos["masse"])
+	label_v_peri.text       = "V. périhélie : %s km/s" % format_scientifique(infos["vitesse_perihelie"])
+	label_excentricite.text = "Excentricité : %.4f"   % infos["excentricite"]
+	label_periode_soleil.text = "Rot. Soleil : %.2f j" % infos["temps_rot_soleil"]
+	label_periode_astre.text  = "Période : %.2f j"    % infos["periode_orbitale"]
+
+
+func _on_terre_donnee_astre(infos: Dictionary) -> void:
+	label_nom.text          = "Nom : %s"              % infos["nom"]
+	label_masse.text        = "Masse : %s kg"         % format_scientifique(infos["masse"])
+	label_v_peri.text       = "V. périhélie : %s km/s" % format_scientifique(infos["vitesse_perihelie"])
+	label_excentricite.text = "Excentricité : %.4f"   % infos["excentricite"]
+	label_periode_soleil.text = "Rot. Soleil : %.2f j" % infos["temps_rot_soleil"]
+	label_periode_astre.text  = "Période : %.2f j"    % infos["periode_orbitale"]
+
+
+func _on_vénus_donnee_astre(infos: Dictionary) -> void:
+	label_nom.text          = "Nom : %s"              % infos["nom"]
+	label_masse.text        = "Masse : %s kg"         % format_scientifique(infos["masse"])
+	label_v_peri.text       = "V. périhélie : %s km/s" % format_scientifique(infos["vitesse_perihelie"])
+	label_excentricite.text = "Excentricité : %.4f"   % infos["excentricite"]
+	label_periode_soleil.text = "Rot. Soleil : %.2f j" % infos["temps_rot_soleil"]
+	label_periode_astre.text  = "Période : %.2f j"    % infos["periode_orbitale"]
+
+
+func _on_uranus_donnee_astre(infos: Dictionary) -> void:
+	label_nom.text          = "Nom : %s"              % infos["nom"]
+	label_masse.text        = "Masse : %s kg"         % format_scientifique(infos["masse"])
+	label_v_peri.text       = "V. périhélie : %s km/s" % format_scientifique(infos["vitesse_perihelie"])
+	label_excentricite.text = "Excentricité : %.4f"   % infos["excentricite"]
+	label_periode_soleil.text = "Rot. Soleil : %.2f j" % infos["temps_rot_soleil"]
+	label_periode_astre.text  = "Période : %.2f j"    % infos["periode_orbitale"]
