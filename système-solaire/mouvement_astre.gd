@@ -149,7 +149,10 @@ func identifiaction_lunes():
 			return true
 	return false
 
-func _on_slider_changed(value: float):
+#func _on_slider_changed(value: float):
+	#vitesse_simu = value
+
+func _on_interface_slider_changed(value: float) -> void:
 	vitesse_simu = value
 
 func runge_kotta(temps_dernier_ecran):
@@ -182,16 +185,16 @@ func runge_kotta(temps_dernier_ecran):
 func _ready() -> void:
 
 	# Trouver l'interface automatiquement
-	interface_node = get_tree().get_first_node_in_group("interface")
+	#interface_node = get_tree().get_first_node_in_group("interface")
 
-	if interface_node:
+	#if interface_node:
 		# Connexion du slider
-		interface_node.connect("slider_changed", Callable(self, "_on_slider_changed"))
+		#interface_node.connect("slider_changed", Callable(self, "_on_slider_changed"))
 
 		# Connexion pour envoyer les infos quand on clique sur l’astre
-		Donnee_Astre.connect(Callable(interface_node, "_on_astre_clique"))
-	else:
-		print("Interface introuvable")
+		#Donnee_Astre.connect(Callable(interface_node, "_on_astre_clique"))
+	#else:
+		#print("Interface introuvable")
 
 	print("ASTRE READY :", name)
 	autres_corps = []
@@ -225,7 +228,7 @@ func _enter_tree():
 	add_to_group("corps")
 	
 signal Donnee_Astre(info)
-signal infos_astre(infos: Dictionary)
+
 
 func emettre_donnees():
 	Donnee_Astre.emit({
@@ -244,5 +247,7 @@ func emettre_donnees():
 		"parent":                       parent_nom
 	})
 	
-func emettre_slide():
-	pass
+
+
+func _on_camera_3d_property_list_changed() -> void:
+	pass # Replace with function body.
