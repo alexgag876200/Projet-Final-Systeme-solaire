@@ -225,6 +225,7 @@ func _enter_tree():
 	add_to_group("corps")
 	
 signal Donnee_Astre(info)
+@warning_ignore("unused_signal")
 signal infos_astre(infos: Dictionary)
 
 func emettre_donnees():
