@@ -10,9 +10,10 @@ class_name Interface
 @export var label_excentricite: Label
 @export var label_periode_soleil: Label
 @export var label_periode_astre: Label
-@export var astre: Astre
+
 
 var slider: float
+signal slider_changed(value: float)
 
 func _ready() -> void:
 	add_to_group("interface")
@@ -30,9 +31,11 @@ func _on_astre_clique(infos: Dictionary) -> void:
 	label_periode_soleil.text = "Rot. Soleil : %.2f j" % infos["temps_rot_soleil"]
 	label_periode_astre.text  = "Période : %.2f j"    % infos["periode_orbitale"]
 
-func changement(value:float):
-	astre.vitesse_simulation = slider_vitesse.value
+func changement(value: float):
+	emit_signal("slider_changed", value)
 
+func _on_slider_changed(value: float):
+	var _vitesse_simulation = value
 func slide_value() -> float:
 	slider = slider_vitesse.value
 	return slider

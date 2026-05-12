@@ -33,9 +33,7 @@
 [ext_resource type="PackedScene" uid="uid://w7mvyych8qmb" path="res://encelade.tscn" id="31_yali2"]
 [ext_resource type="PackedScene" uid="uid://uyd04fibwxm2" path="res://ganymède.tscn" id="32_rvt17"]
 [ext_resource type="PackedScene" uid="uid://dyausbdhl80lc" path="res://protée.tscn" id="33_g2k30"]
-<<<<<<< HEAD
 [ext_resource type="PackedScene" uid="uid://c5ec0vofsyn8o" path="res://Interface.tscn" id="34_cjf08"]
-=======
 [ext_resource type="Shader" uid="uid://8u5640xymk43" path="res://shader.gdshader" id="35_m51mb"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_srcr1"]
@@ -48,7 +46,6 @@ sky_material = SubResource("ShaderMaterial_srcr1")
 background_mode = 2
 sky = SubResource("Sky_cjf08")
 ambient_light_source = 3
->>>>>>> 1cef8fd1ac09e52a9def709ad8446e0902c1e360
 
 [node name="Node3D" type="Node3D" unique_id=1423429033]
 
@@ -58,392 +55,118 @@ script = ExtResource("1_mtdwt")
 vitesse = 20.0
 Vitesse_rotation = 40.0
 
-<<<<<<< HEAD
+
 [node name="Soleil" parent="." unique_id=1213070534 node_paths=PackedStringArray("inter") instance=ExtResource("1_odjec")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
 script = ExtResource("3_uqj0e")
-min_distance_simulee = null
+min_distance_simulee = 0.0
 max_distance_simulee = 5.0
 etapes_calcul_par_ecran = 50
 inter = NodePath("../Interface")
 
-[node name="Mercure" parent="." unique_id=1895002169 node_paths=PackedStringArray("inter") instance=ExtResource("2_mtdwt")]
-=======
+
 [node name="Mercure" parent="." unique_id=1895002169 instance=ExtResource("2_mtdwt")]
->>>>>>> 1cef8fd1ac09e52a9def709ad8446e0902c1e360
 transform = Transform3D(2.2, 0, 0, 0, 2.2, 0, 0, 0, 2.2, 0, 0, 0)
 script = ExtResource("3_uqj0e")
 min_distance_simulee = 12.0
 max_distance_simulee = 18.0
-<<<<<<< HEAD
-etapes_calcul_par_ecran = 50
 inter = NodePath("../Interface")
-=======
 etapes_calcul_par_ecran = 10
->>>>>>> 1cef8fd1ac09e52a9def709ad8446e0902c1e360
 
-[node name="Vénus" parent="." unique_id=1275429055 node_paths=PackedStringArray("inter") instance=ExtResource("3_471bu")]
+[node name="Vénus" parent="." unique_id=1275429055 instance=ExtResource("3_471bu")]
 transform = Transform3D(2.8, 0, 0, 0, 2.8, 0, 0, 0, 2.8, 0, 0, 0)
 script = ExtResource("3_uqj0e")
 min_distance_simulee = 22.0
 max_distance_simulee = 28.0
-<<<<<<< HEAD
-etapes_calcul_par_ecran = 50
 inter = NodePath("../Interface")
-=======
 etapes_calcul_par_ecran = 10
->>>>>>> 1cef8fd1ac09e52a9def709ad8446e0902c1e360
 
-[node name="Terre" parent="." unique_id=1264067127 node_paths=PackedStringArray("inter") instance=ExtResource("4_uqj0e")]
+[node name="Terre" parent="." unique_id=1264067127 instance=ExtResource("4_uqj0e")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
 script = ExtResource("3_uqj0e")
 min_distance_simulee = 34.0
-<<<<<<< HEAD
-max_distance_simulee = 40.0
-etapes_calcul_par_ecran = 50
 inter = NodePath("../Interface")
-=======
 max_distance_simulee = 38.0
 etapes_calcul_par_ecran = 10
->>>>>>> 1cef8fd1ac09e52a9def709ad8446e0902c1e360
 
-[node name="Lune" parent="Terre" unique_id=52885133 node_paths=PackedStringArray("inter") instance=ExtResource("12_ybikh")]
+
+[node name="Lune" parent="Terre" unique_id=52885133 instance=ExtResource("12_ybikh")]
 transform = Transform3D(0.3333333333333333, 0, 0, 0, 0.3333333333333333, 0, 0, 0, 0.3333333333333333, 0, 0, 0)
 script = ExtResource("3_uqj0e")
 min_distance_simulee = 2.0
 max_distance_simulee = 15.0
-etapes_calcul_par_ecran = 50
 inter = NodePath("../../Interface")
+etapes_calcul_par_ecran = 10
 
-[node name="Mars" parent="." unique_id=1149372289 node_paths=PackedStringArray("inter") instance=ExtResource("5_fuldb")]
+[node name="Mars" parent="." unique_id=1149372289 instance=ExtResource("5_fuldb")]
 transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, 0)
 script = ExtResource("3_uqj0e")
 min_distance_simulee = 43.0
 max_distance_simulee = 50.0
-<<<<<<< HEAD
-etapes_calcul_par_ecran = 50
 inter = NodePath("../Interface")
-=======
 etapes_calcul_par_ecran = 10
->>>>>>> 1cef8fd1ac09e52a9def709ad8446e0902c1e360
 
-[node name="Jupiter" parent="." unique_id=762818665 node_paths=PackedStringArray("inter") instance=ExtResource("6_olkoh")]
+[node name="Jupiter" parent="." unique_id=762818665 instance=ExtResource("6_olkoh")]
 transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, 0, 0, 0)
 script = ExtResource("3_uqj0e")
 min_distance_simulee = 55.0
 max_distance_simulee = 70.0
-<<<<<<< HEAD
-etapes_calcul_par_ecran = 50
 inter = NodePath("../Interface")
-=======
 etapes_calcul_par_ecran = 10
->>>>>>> 1cef8fd1ac09e52a9def709ad8446e0902c1e360
 
-[node name="Saturne" parent="." unique_id=1972900681 node_paths=PackedStringArray("inter") instance=ExtResource("7_7rptf")]
+[node name="Saturne" parent="." unique_id=1972900681 instance=ExtResource("7_7rptf")]
 transform = Transform3D(5.5, 0, 0, 0, 5.5, 0, 0, 0, 5.5, 0, 0, 0)
 script = ExtResource("3_uqj0e")
 min_distance_simulee = 80.0
 max_distance_simulee = 95.0
-<<<<<<< HEAD
-etapes_calcul_par_ecran = 50
 inter = NodePath("../Interface")
-=======
 etapes_calcul_par_ecran = 10
->>>>>>> 1cef8fd1ac09e52a9def709ad8446e0902c1e360
 
-[node name="Uranus" parent="." unique_id=981561214 node_paths=PackedStringArray("inter") instance=ExtResource("8_ebwtv")]
+[node name="Uranus" parent="." unique_id=981561214 instance=ExtResource("8_ebwtv")]
 transform = Transform3D(4.5, 0, 0, 0, 4.5, 0, 0, 0, 4.5, 0, 0, 0)
 script = ExtResource("3_uqj0e")
 min_distance_simulee = 100.0
 max_distance_simulee = 115.0
-<<<<<<< HEAD
-etapes_calcul_par_ecran = 50
 inter = NodePath("../Interface")
-=======
 etapes_calcul_par_ecran = 10
->>>>>>> 1cef8fd1ac09e52a9def709ad8446e0902c1e360
 
-[node name="Neptune" parent="." unique_id=1056707836 node_paths=PackedStringArray("inter") instance=ExtResource("9_8r7bp")]
+[node name="Neptune" parent="." unique_id=1056707836 instance=ExtResource("9_8r7bp")]
 transform = Transform3D(4.4, 0, 0, 0, 4.3978288656092195, -0.1382073399437653, 0, 0.1382073399437653, 4.3978288656092195, 0, 0, 0)
 script = ExtResource("3_uqj0e")
 min_distance_simulee = 120.0
 max_distance_simulee = 140.0
-<<<<<<< HEAD
-etapes_calcul_par_ecran = 50
 inter = NodePath("../Interface")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1433912278]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 111.40415707906548, 0)
 light_color = Color(1, 0.9529412, 0.7529412, 1)
 shadow_enabled = true
-=======
 etapes_calcul_par_ecran = 10
->>>>>>> 1cef8fd1ac09e52a9def709ad8446e0902c1e360
 
-[node name="Io" parent="." unique_id=421211492 node_paths=PackedStringArray("inter") instance=ExtResource("13_cjf08")]
+[node name="Io" parent="." unique_id=421211492 instance=ExtResource("13_cjf08")]
 script = ExtResource("3_uqj0e")
 min_distance_simulee = 2.0
 max_distance_simulee = 15.0
-<<<<<<< HEAD
-etapes_calcul_par_ecran = 50
 inter = NodePath("../Interface")
-=======
 etapes_calcul_par_ecran = 10
->>>>>>> 1cef8fd1ac09e52a9def709ad8446e0902c1e360
 
-[node name="Rhée" parent="." unique_id=1885101134 node_paths=PackedStringArray("inter") instance=ExtResource("14_0panu")]
+[node name="Rhée" parent="." unique_id=1885101134 instance=ExtResource("14_0panu")]
 script = ExtResource("3_uqj0e")
 min_distance_simulee = 2.0
 max_distance_simulee = 15.0
-<<<<<<< HEAD
-etapes_calcul_par_ecran = 50
 inter = NodePath("../Interface")
-=======
 etapes_calcul_par_ecran = 10
->>>>>>> 1cef8fd1ac09e52a9def709ad8446e0902c1e360
 
-[node name="Ariel" parent="." unique_id=901021438 node_paths=PackedStringArray("inter") instance=ExtResource("15_m51mb")]
+[node name="Ariel" parent="." unique_id=901021438 instance=ExtResource("15_m51mb")]
 script = ExtResource("3_uqj0e")
 min_distance_simulee = 2.0
 max_distance_simulee = 15.0
-<<<<<<< HEAD
-etapes_calcul_par_ecran = 50
 inter = NodePath("../Interface")
-=======
 etapes_calcul_par_ecran = 10
->>>>>>> 1cef8fd1ac09e52a9def709ad8446e0902c1e360
 
-[node name="Dioné" parent="." unique_id=1754045789 node_paths=PackedStringArray("inter") instance=ExtResource("16_srcr1")]
+[node name="Dioné" parent="." unique_id=1754045789 instance=ExtResource("16_srcr1")]
 script = ExtResource("3_uqj0e")
 min_distance_simulee = 2.0
 max_distance_simulee = 15.0
-<<<<<<< HEAD
-etapes_calcul_par_ecran = 50
+etapes_calcul_par_ecran = 10
 inter = NodePath("../Interface")
-=======
-etapes_calcul_par_ecran = 10
->>>>>>> 1cef8fd1ac09e52a9def709ad8446e0902c1e360
-
-[node name="Japet" parent="." unique_id=529915185 node_paths=PackedStringArray("inter") instance=ExtResource("17_5j541")]
-script = ExtResource("3_uqj0e")
-min_distance_simulee = 2.0
-max_distance_simulee = 15.0
-<<<<<<< HEAD
-etapes_calcul_par_ecran = 50
-inter = NodePath("../Interface")
-=======
-etapes_calcul_par_ecran = 10
->>>>>>> 1cef8fd1ac09e52a9def709ad8446e0902c1e360
-
-[node name="Mimas" parent="." unique_id=1135177883 node_paths=PackedStringArray("inter") instance=ExtResource("18_vm37j")]
-script = ExtResource("3_uqj0e")
-min_distance_simulee = 2.0
-max_distance_simulee = 15.0
-<<<<<<< HEAD
-etapes_calcul_par_ecran = 50
-inter = NodePath("../Interface")
-=======
-etapes_calcul_par_ecran = 10
->>>>>>> 1cef8fd1ac09e52a9def709ad8446e0902c1e360
-
-[node name="Titan" parent="." unique_id=1182411250 node_paths=PackedStringArray("inter") instance=ExtResource("19_jpkoo")]
-script = ExtResource("3_uqj0e")
-min_distance_simulee = 2.0
-max_distance_simulee = 15.0
-<<<<<<< HEAD
-etapes_calcul_par_ecran = 50
-inter = NodePath("../Interface")
-=======
-etapes_calcul_par_ecran = 10
->>>>>>> 1cef8fd1ac09e52a9def709ad8446e0902c1e360
-
-[node name="Déimos" parent="." unique_id=349647423 node_paths=PackedStringArray("inter") instance=ExtResource("20_cvpal")]
-script = ExtResource("3_uqj0e")
-min_distance_simulee = 2.0
-max_distance_simulee = 15.0
-<<<<<<< HEAD
-etapes_calcul_par_ecran = 50
-inter = NodePath("../Interface")
-=======
-etapes_calcul_par_ecran = 10
->>>>>>> 1cef8fd1ac09e52a9def709ad8446e0902c1e360
-
-[node name="Europe" parent="." unique_id=577623809 node_paths=PackedStringArray("inter") instance=ExtResource("21_es1rn")]
-script = ExtResource("3_uqj0e")
-min_distance_simulee = 2.0
-max_distance_simulee = 15.0
-<<<<<<< HEAD
-etapes_calcul_par_ecran = 50
-inter = NodePath("../Interface")
-=======
-etapes_calcul_par_ecran = 10
->>>>>>> 1cef8fd1ac09e52a9def709ad8446e0902c1e360
-
-[node name="Obéron" parent="." unique_id=1157156744 node_paths=PackedStringArray("inter") instance=ExtResource("22_skrrq")]
-script = ExtResource("3_uqj0e")
-min_distance_simulee = 2.0
-max_distance_simulee = 15.0
-<<<<<<< HEAD
-etapes_calcul_par_ecran = 50
-inter = NodePath("../Interface")
-=======
-etapes_calcul_par_ecran = 10
->>>>>>> 1cef8fd1ac09e52a9def709ad8446e0902c1e360
-
-[node name="Phobos" parent="." unique_id=97194093 node_paths=PackedStringArray("inter") instance=ExtResource("23_rx3yu")]
-script = ExtResource("3_uqj0e")
-min_distance_simulee = 2.0
-max_distance_simulee = 15.0
-<<<<<<< HEAD
-etapes_calcul_par_ecran = 50
-inter = NodePath("../Interface")
-=======
-etapes_calcul_par_ecran = 10
->>>>>>> 1cef8fd1ac09e52a9def709ad8446e0902c1e360
-
-[node name="Triton" parent="." unique_id=355759041 node_paths=PackedStringArray("inter") instance=ExtResource("24_da4w3")]
-script = ExtResource("3_uqj0e")
-min_distance_simulee = 2.0
-max_distance_simulee = 15.0
-<<<<<<< HEAD
-etapes_calcul_par_ecran = 50
-inter = NodePath("../Interface")
-=======
-etapes_calcul_par_ecran = 10
->>>>>>> 1cef8fd1ac09e52a9def709ad8446e0902c1e360
-
-[node name="Téthys" parent="." unique_id=934831194 node_paths=PackedStringArray("inter") instance=ExtResource("25_j1ya3")]
-script = ExtResource("3_uqj0e")
-min_distance_simulee = 2.0
-max_distance_simulee = 15.0
-<<<<<<< HEAD
-etapes_calcul_par_ecran = 50
-inter = NodePath("../Interface")
-=======
-etapes_calcul_par_ecran = 10
->>>>>>> 1cef8fd1ac09e52a9def709ad8446e0902c1e360
-
-[node name="Miranda" parent="." unique_id=1568394079 node_paths=PackedStringArray("inter") instance=ExtResource("26_iik8y")]
-script = ExtResource("3_uqj0e")
-min_distance_simulee = 2.0
-max_distance_simulee = 15.0
-<<<<<<< HEAD
-etapes_calcul_par_ecran = 50
-inter = NodePath("../Interface")
-=======
-etapes_calcul_par_ecran = 10
->>>>>>> 1cef8fd1ac09e52a9def709ad8446e0902c1e360
-
-[node name="Titania" parent="." unique_id=140159150 node_paths=PackedStringArray("inter") instance=ExtResource("27_047bx")]
-script = ExtResource("3_uqj0e")
-min_distance_simulee = 2.0
-max_distance_simulee = 15.0
-<<<<<<< HEAD
-etapes_calcul_par_ecran = 50
-inter = NodePath("../Interface")
-=======
-etapes_calcul_par_ecran = 10
->>>>>>> 1cef8fd1ac09e52a9def709ad8446e0902c1e360
-
-[node name="Néréide" parent="." unique_id=2104324494 node_paths=PackedStringArray("inter") instance=ExtResource("28_j0nhd")]
-script = ExtResource("3_uqj0e")
-min_distance_simulee = 2.0
-max_distance_simulee = 15.0
-<<<<<<< HEAD
-etapes_calcul_par_ecran = 50
-inter = NodePath("../Interface")
-=======
-etapes_calcul_par_ecran = 10
->>>>>>> 1cef8fd1ac09e52a9def709ad8446e0902c1e360
-
-[node name="Umbriel" parent="." unique_id=1048404473 node_paths=PackedStringArray("inter") instance=ExtResource("29_yryxg")]
-script = ExtResource("3_uqj0e")
-min_distance_simulee = 2.0
-max_distance_simulee = 15.0
-<<<<<<< HEAD
-etapes_calcul_par_ecran = 50
-inter = NodePath("../Interface")
-=======
-etapes_calcul_par_ecran = 10
->>>>>>> 1cef8fd1ac09e52a9def709ad8446e0902c1e360
-
-[node name="Callisto" parent="." unique_id=715107927 node_paths=PackedStringArray("inter") instance=ExtResource("30_aifcr")]
-script = ExtResource("3_uqj0e")
-min_distance_simulee = 2.0
-max_distance_simulee = 15.0
-<<<<<<< HEAD
-etapes_calcul_par_ecran = 50
-inter = NodePath("../Interface")
-=======
-etapes_calcul_par_ecran = 10
->>>>>>> 1cef8fd1ac09e52a9def709ad8446e0902c1e360
-
-[node name="Encelade" parent="." unique_id=1261558438 node_paths=PackedStringArray("inter") instance=ExtResource("31_yali2")]
-script = ExtResource("3_uqj0e")
-min_distance_simulee = 2.0
-max_distance_simulee = 15.0
-<<<<<<< HEAD
-etapes_calcul_par_ecran = 50
-inter = NodePath("../Interface")
-=======
-etapes_calcul_par_ecran = 10
->>>>>>> 1cef8fd1ac09e52a9def709ad8446e0902c1e360
-
-[node name="Ganymède" parent="." unique_id=2024615620 node_paths=PackedStringArray("inter") instance=ExtResource("32_rvt17")]
-script = ExtResource("3_uqj0e")
-min_distance_simulee = 2.0
-max_distance_simulee = 15.0
-<<<<<<< HEAD
-etapes_calcul_par_ecran = 50
-inter = NodePath("../Interface")
-=======
-etapes_calcul_par_ecran = 10
->>>>>>> 1cef8fd1ac09e52a9def709ad8446e0902c1e360
-
-[node name="Protée" parent="." unique_id=1409055924 node_paths=PackedStringArray("inter") instance=ExtResource("33_g2k30")]
-script = ExtResource("3_uqj0e")
-min_distance_simulee = 2.0
-max_distance_simulee = 15.0
-<<<<<<< HEAD
-etapes_calcul_par_ecran = 50
-inter = NodePath("../Interface")
-
-[node name="Interface" parent="." unique_id=187721183 instance=ExtResource("34_cjf08")]
-=======
-etapes_calcul_par_ecran = 10
-
-[node name="Soleil" parent="." unique_id=1213070534 instance=ExtResource("1_odjec")]
-transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
-top_level = true
-script = ExtResource("3_uqj0e")
-min_distance_simulee = 0.0
-max_distance_simulee = 5.0
-etapes_calcul_par_ecran = 10
-
-[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=567637607]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2311.1889923011317, 623.4136907331814)
-layers = 1023
-light_size = 1.0
-shadow_enabled = true
-omni_range = 4096.0
-omni_attenuation = 0.0
-omni_shadow_mode = 0
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1152439182]
-environment = SubResource("Environment_ybikh")
-
-[node name="OmniLight3D2" type="OmniLight3D" parent="." unique_id=248483233]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1891.6195560035296, 623.4136907331814)
-layers = 1023
-light_size = 1.0
-shadow_enabled = true
-omni_range = 4096.0
-omni_attenuation = 0.0
-omni_shadow_mode = 0
-
-[node name="OmniLight3D3" type="OmniLight3D" parent="." unique_id=833275901]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 577.8037475791709)
-layers = 1023
-omni_range = 4096.0
-omni_attenuation = 0.0
->>>>>>> 1cef8fd1ac09e52a9def709ad8446e0902c1e360

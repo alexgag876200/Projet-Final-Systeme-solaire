@@ -1,10 +1,10 @@
 extends Node3D
-class_name Astre
+
 
 
 var autres_corps: Array[Node3D]
 
-
+var interface_node: Node
 
 var demi_grand_axe: float 
 var excentricite: float
@@ -45,10 +45,9 @@ var k1: Vector3
 var k2: Vector3
 var k3: Vector3
 var k4: Vector3
-
+var vitesse_simu: float = 1.0
 var periode : float
 
-@export var inter: Interface
 
 func conv_position_reelle_a_simulee(position_reelle : Vector3) -> Vector3:
 	"""Effectue la conversion d'une position réelle à une position de l'espace 
@@ -149,6 +148,10 @@ func identifiaction_lunes():
 		if data["nom"] == self.name:
 			return true
 	return false
+
+func _on_slider_changed(value: float):
+	vitesse_simu = value
+
 func runge_kotta(temps_dernier_ecran):
 		#Nombre de période à simuler dans l'écran
 	var dt = temps_dernier_ecran / float(etapes_calcul_par_ecran)
@@ -175,18 +178,33 @@ func runge_kotta(temps_dernier_ecran):
 		v_i += (dt / 6.0) * (k1_v + 2.0*k2_v + 2.0*k3_v + k4_v)
 		
 
+
 func _ready() -> void:
+
+	# Trouver l'interface automatiquement
+	interface_node = get_tree().get_first_node_in_group("interface")
+
+	if interface_node:
+		# Connexion du slider
+		interface_node.connect("slider_changed", Callable(self, "_on_slider_changed"))
+
+		# Connexion pour envoyer les infos quand on clique sur l’astre
+		Donnee_Astre.connect(Callable(interface_node, "_on_astre_clique"))
+	else:
+		print("Interface introuvable")
+
+	print("ASTRE READY :", name)
 	autres_corps = []
 	for n in get_tree().get_nodes_in_group("corps"):
 		if n is Node3D:
 			autres_corps.append(n)
 	autres_corps.erase(self)
+
 	rotate_y(inclinaison)
 	assignation_donnees_planete()
 	initialiser_position_et_vitesse()
 	changement_vitesse_lunes()
 	await get_tree().process_frame
-
 
 	min_distance_reelle = demi_grand_axe * (1.0 - excentricite)
 	max_distance_reelle = demi_grand_axe * (1.0 + excentricite)
@@ -195,24 +213,10 @@ func _ready() -> void:
 		if corps.name == parent_nom:
 			parent_node = corps
 			break
-		
-	interface_node = get_tree().get_first_node_in_group("interface")
-	if interface_node != null:
-		# connexion au signal slider_changed si présent
-		if interface_node.has_signal("slider_changed"):
-			interface_node.connect("slider_changed", Callable(self, "_on_slider_changed"))
-		# connexion du signal d'émission de données vers l'interface (si méthode présente)
-		if interface_node.has_method("_on_astre_clique"):
-			connect("Donnee_Astre", interface_node, "_on_astre_clique")
-	else:
-		print("Astre: interface non trouvée dans le groupe 'interface'")
 
-	var interface = get_tree().get_first_node_in_group("interface")
-	if interface:
-		Donnee_Astre.connect(interface._on_astre_clique)
+	
 func _process(delta: float) -> void:
-	var vitesse_simu = inter.slide_value()
-	runge_kotta(delta * temps_sec_mois* vitesse_simu)
+	runge_kotta(delta * temps_sec_mois * vitesse_simu)
 	if parent_node != null:
 		global_position = parent_node.global_position + conv_position_reelle_a_simulee(r_i)
 
@@ -221,6 +225,7 @@ func _enter_tree():
 	add_to_group("corps")
 	
 signal Donnee_Astre(info)
+signal infos_astre(infos: Dictionary)
 
 func emettre_donnees():
 	Donnee_Astre.emit({
