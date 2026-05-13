@@ -14,14 +14,42 @@
 [ext_resource type="PackedScene" uid="uid://l4ttyfm42rtg" path="res://Lune.tscn" id="12_ybikh"]
 [ext_resource type="PackedScene" uid="uid://div1rj738sak4" path="res://io.tscn" id="13_cjf08"]
 [ext_resource type="PackedScene" uid="uid://dr8mqj6f7tq0e" path="res://rhée.tscn" id="14_0panu"]
+[ext_resource type="PackedScene" uid="uid://dyausbdhl80lc" path="res://protée.tscn" id="15_0panu"]
 [ext_resource type="PackedScene" uid="uid://dqnniman36c87" path="res://ariel.tscn" id="15_m51mb"]
+[ext_resource type="PackedScene" uid="uid://uyd04fibwxm2" path="res://ganymède.tscn" id="16_m51mb"]
 [ext_resource type="PackedScene" uid="uid://buyi1k3xq7e6x" path="res://dioné.tscn" id="16_srcr1"]
+[ext_resource type="PackedScene" uid="uid://cr4u6dso5xawe" path="res://callisto.tscn" id="17_srcr1"]
+[ext_resource type="PackedScene" uid="uid://w7mvyych8qmb" path="res://encelade.tscn" id="18_5j541"]
+[ext_resource type="Texture2D" uid="uid://daq7dano8ht0r" path="res://HDR_blue_nebulae_2.hdr" id="18_ssm0t"]
+[ext_resource type="PackedScene" uid="uid://jwf1nyy8g015" path="res://umbriel.tscn" id="19_vm37j"]
+[ext_resource type="PackedScene" uid="uid://bq64kra1xowpk" path="res://néréide.tscn" id="20_jpkoo"]
+[ext_resource type="PackedScene" uid="uid://c16yw57e7msxy" path="res://titania.tscn" id="21_cvpal"]
+[ext_resource type="PackedScene" uid="uid://d2aubkp7t3ih7" path="res://miranda.tscn" id="22_es1rn"]
+[ext_resource type="PackedScene" uid="uid://csqdrkct8uy0" path="res://téthys.tscn" id="23_skrrq"]
+[ext_resource type="PackedScene" uid="uid://bv64jclw5xjhx" path="res://triton.tscn" id="24_rx3yu"]
+[ext_resource type="PackedScene" uid="uid://bg8gcg10htuem" path="res://phobos.tscn" id="25_da4w3"]
+[ext_resource type="PackedScene" uid="uid://cf3rangk4vxk0" path="res://japet.tscn" id="30_j1ya3"]
+[ext_resource type="PackedScene" uid="uid://vuj2u5liy18t" path="res://déimos.tscn" id="31_iik8y"]
+[ext_resource type="PackedScene" uid="uid://bbthm7dbp3ep2" path="res://europe.tscn" id="32_047bx"]
+[ext_resource type="PackedScene" uid="uid://rsjj4r68jpwr" path="res://titan.tscn" id="33_j0nhd"]
 [ext_resource type="PackedScene" uid="uid://c5ec0vofsyn8o" path="res://Interface.tscn" id="34_cjf08"]
+[ext_resource type="PackedScene" uid="uid://jl1ankxuvly4" path="res://obéron.tscn" id="34_yryxg"]
+[ext_resource type="PackedScene" uid="uid://bp2j5hft6m2jx" path="res://mimas.tscn" id="35_aifcr"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_g4w0a"]
+panorama = ExtResource("18_ssm0t")
+
+[sub_resource type="Sky" id="Sky_g4w0a"]
+sky_material = SubResource("PanoramaSkyMaterial_g4w0a")
+
+[sub_resource type="Environment" id="Environment_qjcrp"]
+background_mode = 2
+sky = SubResource("Sky_g4w0a")
 
 [node name="Node3D" type="Node3D" unique_id=1423429033]
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=729626946]
-transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 0, 25, 100)
+transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 0, 100, 300)
 script = ExtResource("1_mtdwt")
 vitesse = 20.0
 Vitesse_rotation = 40.0
@@ -31,99 +59,211 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 111.40415707906548, 0)
 light_color = Color(1, 0.9529412, 0.7529412, 1)
 shadow_enabled = true
 
-[node name="Io" parent="." unique_id=421211492 instance=ExtResource("13_cjf08")]
-script = ExtResource("3_uqj0e")
-min_distance_simulee = 2.0
-max_distance_simulee = 15.0
-etapes_calcul_par_ecran = 10
-
-[node name="Rhée" parent="." unique_id=1885101134 instance=ExtResource("14_0panu")]
-script = ExtResource("3_uqj0e")
-min_distance_simulee = 2.0
-max_distance_simulee = 15.0
-etapes_calcul_par_ecran = 10
-
-[node name="Ariel" parent="." unique_id=901021438 instance=ExtResource("15_m51mb")]
-script = ExtResource("3_uqj0e")
-min_distance_simulee = 2.0
-max_distance_simulee = 15.0
-etapes_calcul_par_ecran = 10
-
-[node name="Dioné" parent="." unique_id=1754045789 instance=ExtResource("16_srcr1")]
-script = ExtResource("3_uqj0e")
-min_distance_simulee = 2.0
-max_distance_simulee = 15.0
-etapes_calcul_par_ecran = 10
-
 [node name="Uranus" parent="." unique_id=1213070534 instance=ExtResource("8_ebwtv")]
+transform = Transform3D(5.45, 0, 0, 0, 5.45, 0, 0, 0, 5.45, 0, 0, 0)
 script = ExtResource("3_uqj0e")
-min_distance_simulee = 100.0
-max_distance_simulee = 115.0
+min_distance_simulee = 145.0
+max_distance_simulee = 155.0
 etapes_calcul_par_ecran = 10
 
 [node name="Vénus" parent="." unique_id=250556566 instance=ExtResource("3_471bu")]
+transform = Transform3D(4.1, 0, 0, 0, 4.1, 0, 0, 0, 4.1, 0, 0, 0)
 script = ExtResource("3_uqj0e")
-min_distance_simulee = 22.0
-max_distance_simulee = 28.0
+min_distance_simulee = 45.0
+max_distance_simulee = 55.0
 etapes_calcul_par_ecran = 10
 
 [node name="Terre" parent="." unique_id=947386514 instance=ExtResource("4_uqj0e")]
+transform = Transform3D(4.45, 0, 0, 0, 4.45, 0, 0, 0, 4.45, 0, 0, 0)
 script = ExtResource("3_uqj0e")
-min_distance_simulee = 34.0
-max_distance_simulee = 37.0
-etapes_calcul_par_ecran = 10
-
-[node name="Lune" parent="Terre" unique_id=1520597062 instance=ExtResource("12_ybikh")]
-script = ExtResource("3_uqj0e")
-min_distance_simulee = 2.0
-max_distance_simulee = 15.0
+min_distance_simulee = 65.0
+max_distance_simulee = 75.0
 etapes_calcul_par_ecran = 10
 
 [node name="Soleil" parent="." unique_id=204455680 instance=ExtResource("1_odjec")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
 script = ExtResource("3_uqj0e")
 min_distance_simulee = 0.0
-max_distance_simulee = 5.0
+max_distance_simulee = 15.0
 etapes_calcul_par_ecran = 10
 
 [node name="Saturne" parent="." unique_id=1010572570 instance=ExtResource("7_7rptf")]
+transform = Transform3D(6.3, 0, 0, 0, 6.3, 0, 0, 0, 6.3, 0, 0, 0)
 script = ExtResource("3_uqj0e")
-min_distance_simulee = 80.0
-max_distance_simulee = 95.0
-etapes_calcul_par_ecran = 10
-
-[node name="Neptune" parent="." unique_id=1917745980 instance=ExtResource("9_8r7bp")]
-script = ExtResource("3_uqj0e")
-min_distance_simulee = 120.0
-max_distance_simulee = 140.0
+min_distance_simulee = 125.0
+max_distance_simulee = 135.0
 etapes_calcul_par_ecran = 10
 
 [node name="Mercure" parent="." unique_id=249292042 instance=ExtResource("2_mtdwt")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
 script = ExtResource("3_uqj0e")
-min_distance_simulee = 12.0
-max_distance_simulee = 18.0
+min_distance_simulee = 25.0
+max_distance_simulee = 35.0
 etapes_calcul_par_ecran = 10
 
 [node name="Mars" parent="." unique_id=109092986 instance=ExtResource("5_fuldb")]
+transform = Transform3D(4.4, 0, 0, 0, 4.4, 0, 0, 0, 4.4, 0, 0, 0)
 script = ExtResource("3_uqj0e")
-min_distance_simulee = 43.0
-max_distance_simulee = 50.0
+min_distance_simulee = 85.0
+max_distance_simulee = 95.0
 etapes_calcul_par_ecran = 10
 
 [node name="Jupiter" parent="." unique_id=1118682118 instance=ExtResource("6_olkoh")]
+transform = Transform3D(6.5, 0, 0, 0, 6.5, 0, 0, 0, 6.5, 0, 0, 0)
 script = ExtResource("3_uqj0e")
-min_distance_simulee = 55.0
-max_distance_simulee = 70.0
+min_distance_simulee = 105.0
+max_distance_simulee = 115.0
 etapes_calcul_par_ecran = 10
 
 [node name="Interface" parent="." unique_id=187721183 instance=ExtResource("34_cjf08")]
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=339907892]
+environment = SubResource("Environment_qjcrp")
+
+[node name="Neptune" parent="." unique_id=1917745980 instance=ExtResource("9_8r7bp")]
+transform = Transform3D(5.4, 0, 0, 0, 5.397335425974952, -0.1696180990218938, 0, 0.1696180990218938, 5.397335425974952, 0, 0, 0)
+script = ExtResource("3_uqj0e")
+min_distance_simulee = 165.0
+max_distance_simulee = 195.0
+etapes_calcul_par_ecran = 10
+
+[node name="Lune" parent="." unique_id=1520597062 instance=ExtResource("12_ybikh")]
+script = ExtResource("3_uqj0e")
+min_distance_simulee = 5.0
+max_distance_simulee = 8.0
+etapes_calcul_par_ecran = 10
+
+[node name="Protée" parent="." unique_id=982944515 instance=ExtResource("15_0panu")]
+script = ExtResource("3_uqj0e")
+min_distance_simulee = 5.0
+max_distance_simulee = 8.0
+etapes_calcul_par_ecran = 10
+
+[node name="Ganymède" parent="." unique_id=1229845216 instance=ExtResource("16_m51mb")]
+script = ExtResource("3_uqj0e")
+min_distance_simulee = 5.0
+max_distance_simulee = 8.0
+etapes_calcul_par_ecran = 10
+
+[node name="Callisto" parent="." unique_id=384012570 instance=ExtResource("17_srcr1")]
+script = ExtResource("3_uqj0e")
+min_distance_simulee = 5.0
+max_distance_simulee = 8.0
+etapes_calcul_par_ecran = 10
+
+[node name="Encelade" parent="." unique_id=1086632384 instance=ExtResource("18_5j541")]
+script = ExtResource("3_uqj0e")
+min_distance_simulee = 5.0
+max_distance_simulee = 8.0
+etapes_calcul_par_ecran = 10
+
+[node name="Umbriel" parent="." unique_id=1641189481 instance=ExtResource("19_vm37j")]
+script = ExtResource("3_uqj0e")
+min_distance_simulee = 5.0
+max_distance_simulee = 8.0
+etapes_calcul_par_ecran = 10
+
+[node name="Néréide" parent="." unique_id=2429536 instance=ExtResource("20_jpkoo")]
+script = ExtResource("3_uqj0e")
+min_distance_simulee = 5.0
+max_distance_simulee = 8.0
+etapes_calcul_par_ecran = 10
+
+[node name="Titania" parent="." unique_id=926859436 instance=ExtResource("21_cvpal")]
+script = ExtResource("3_uqj0e")
+min_distance_simulee = 5.0
+max_distance_simulee = 8.0
+etapes_calcul_par_ecran = 10
+
+[node name="Miranda" parent="." unique_id=1257059656 instance=ExtResource("22_es1rn")]
+script = ExtResource("3_uqj0e")
+min_distance_simulee = 5.0
+max_distance_simulee = 8.0
+etapes_calcul_par_ecran = 10
+
+[node name="Téthys" parent="." unique_id=1963516549 instance=ExtResource("23_skrrq")]
+script = ExtResource("3_uqj0e")
+min_distance_simulee = 5.0
+max_distance_simulee = 8.0
+etapes_calcul_par_ecran = 10
+
+[node name="Triton" parent="." unique_id=1742332835 instance=ExtResource("24_rx3yu")]
+script = ExtResource("3_uqj0e")
+min_distance_simulee = 5.0
+max_distance_simulee = 8.0
+etapes_calcul_par_ecran = 10
+
+[node name="Phobos" parent="." unique_id=948387580 instance=ExtResource("25_da4w3")]
+script = ExtResource("3_uqj0e")
+min_distance_simulee = 5.0
+max_distance_simulee = 8.0
+etapes_calcul_par_ecran = 10
+
+[node name="Io" parent="." unique_id=2059858076 instance=ExtResource("13_cjf08")]
+script = ExtResource("3_uqj0e")
+min_distance_simulee = 5.0
+max_distance_simulee = 8.0
+etapes_calcul_par_ecran = 10
+
+[node name="Rhée" parent="." unique_id=1648057515 instance=ExtResource("14_0panu")]
+script = ExtResource("3_uqj0e")
+min_distance_simulee = 5.0
+max_distance_simulee = 8.0
+etapes_calcul_par_ecran = 10
+
+[node name="Ariel" parent="." unique_id=2049590624 instance=ExtResource("15_m51mb")]
+script = ExtResource("3_uqj0e")
+min_distance_simulee = 5.0
+max_distance_simulee = 8.0
+etapes_calcul_par_ecran = 10
+
+[node name="Dioné" parent="." unique_id=1681624449 instance=ExtResource("16_srcr1")]
+script = ExtResource("3_uqj0e")
+min_distance_simulee = 5.0
+max_distance_simulee = 8.0
+etapes_calcul_par_ecran = 10
+
+[node name="Japet" parent="." unique_id=2072201880 instance=ExtResource("30_j1ya3")]
+script = ExtResource("3_uqj0e")
+min_distance_simulee = 5.0
+max_distance_simulee = 8.0
+etapes_calcul_par_ecran = 10
+
+[node name="Déimos" parent="." unique_id=167598588 instance=ExtResource("31_iik8y")]
+script = ExtResource("3_uqj0e")
+min_distance_simulee = 5.0
+max_distance_simulee = 8.0
+etapes_calcul_par_ecran = 10
+
+[node name="Europe" parent="." unique_id=9600336 instance=ExtResource("32_047bx")]
+script = ExtResource("3_uqj0e")
+min_distance_simulee = 5.0
+max_distance_simulee = 8.0
+etapes_calcul_par_ecran = 10
+
+[node name="Titan" parent="." unique_id=1421330280 instance=ExtResource("33_j0nhd")]
+script = ExtResource("3_uqj0e")
+min_distance_simulee = 5.0
+max_distance_simulee = 8.0
+etapes_calcul_par_ecran = 10
+
+[node name="Obéron" parent="." unique_id=908479083 instance=ExtResource("34_yryxg")]
+script = ExtResource("3_uqj0e")
+min_distance_simulee = 5.0
+max_distance_simulee = 8.0
+etapes_calcul_par_ecran = 10
+
+[node name="Mimas" parent="." unique_id=2092127195 instance=ExtResource("35_aifcr")]
+script = ExtResource("3_uqj0e")
+min_distance_simulee = 5.0
+max_distance_simulee = 8.0
+etapes_calcul_par_ecran = 10
+
 [connection signal="Donnee_Astre" from="Uranus" to="Interface" method="_on_uranus_donnee_astre"]
 [connection signal="Donnee_Astre" from="Vénus" to="Interface" method="_on_vénus_donnee_astre"]
 [connection signal="Donnee_Astre" from="Terre" to="Interface" method="_on_terre_donnee_astre"]
-[connection signal="Donnee_Astre" from="Terre/Lune" to="Interface" method="_on_lune_donnee_astre"]
 [connection signal="Donnee_Astre" from="Soleil" to="Interface" method="_on_soleil_infos_astre"]
 [connection signal="Donnee_Astre" from="Saturne" to="Interface" method="_on_saturne_donnee_astre"]
-[connection signal="Donnee_Astre" from="Neptune" to="Interface" method="_on_neptune_donnee_astre"]
 [connection signal="Donnee_Astre" from="Mercure" to="Interface" method="_on_mercure_donnee_astre"]
 [connection signal="Donnee_Astre" from="Mars" to="Interface" method="_on_mars_donnee_astre"]
 [connection signal="Donnee_Astre" from="Jupiter" to="Interface" method="_on_jupiter_donnee_astre"]
@@ -134,5 +274,7 @@ etapes_calcul_par_ecran = 10
 [connection signal="slider_changed" from="Interface" to="Saturne" method="_on_interface_slider_changed"]
 [connection signal="slider_changed" from="Interface" to="Mercure" method="_on_interface_slider_changed"]
 [connection signal="slider_changed" from="Interface" to="Mars" method="_on_interface_slider_changed"]
-[connection signal="slider_changed" from="Interface" to="Terre/Lune" method="_on_interface_slider_changed"]
 [connection signal="slider_changed" from="Interface" to="Jupiter" method="_on_interface_slider_changed"]
+[connection signal="slider_changed" from="Interface" to="Lune" method="_on_interface_slider_changed"]
+[connection signal="Donnee_Astre" from="Neptune" to="Interface" method="_on_neptune_donnee_astre"]
+[connection signal="Donnee_Astre" from="Lune" to="Interface" method="_on_lune_donnee_astre"]

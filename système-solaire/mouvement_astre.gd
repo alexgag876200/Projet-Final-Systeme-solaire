@@ -197,6 +197,12 @@ func _ready() -> void:
 		#print("Interface introuvable")
 
 	print("ASTRE READY :", name)
+
+	# Connexion interface
+	interface_node = get_tree().get_first_node_in_group("interface")
+	if interface_node:
+		interface_node.connect("slider_changed", Callable(self, "_on_interface_slider_changed"))
+
 	autres_corps = []
 	for n in get_tree().get_nodes_in_group("corps"):
 		if n is Node3D:
@@ -216,7 +222,6 @@ func _ready() -> void:
 		if corps.name == parent_nom:
 			parent_node = corps
 			break
-
 	
 func _process(delta: float) -> void:
 	runge_kotta(delta * temps_sec_mois * vitesse_simu)
@@ -225,28 +230,28 @@ func _process(delta: float) -> void:
 
 
 func _enter_tree():
-    add_to_group("corps")
-    
+	add_to_group("corps")
+	
 signal Donnee_Astre(info)
 @warning_ignore("unused_signal")
 signal infos_astre(infos: Dictionary)
 
 func emettre_donnees():
-    Donnee_Astre.emit({
-        "nom":                          name,
-        "demi_grand_axe":               demi_grand_axe,
-        "excentricite":                 excentricite,
-        "inclinaison":                  inclinaison,
-        "argument_perihelie":           argument_perihelie,
-        "perihelie":                    perihelie,
-        "vitesse_perihelie":            vitesse_perihelie,
-        "periode_orbitale":             periode_orbitale,
-        "temps_rot_soleil":             temps_rot_soleil,
-        "masse":                        masse,
-        "rayon":                        rayon,
-        "temps_rotation_sur_elle_meme": temps_rotation_sur_elle_meme,
-        "parent":                       parent_nom
-    })	
+	Donnee_Astre.emit({
+		"nom":                          name,
+		"demi_grand_axe":               demi_grand_axe,
+		"excentricite":                 excentricite,
+		"inclinaison":                  inclinaison,
+		"argument_perihelie":           argument_perihelie,
+		"perihelie":                    perihelie,
+		"vitesse_perihelie":            vitesse_perihelie,
+		"periode_orbitale":             periode_orbitale,
+		"temps_rot_soleil":             temps_rot_soleil,
+		"masse":                        masse,
+		"rayon":                        rayon,
+		"temps_rotation_sur_elle_meme": temps_rotation_sur_elle_meme,
+		"parent":                       parent_nom
+	})	
 
 
 func _on_camera_3d_property_list_changed() -> void:
