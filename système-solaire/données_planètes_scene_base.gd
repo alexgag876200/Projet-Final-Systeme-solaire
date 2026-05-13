@@ -11,6 +11,9 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	"""
+	Rotation de l'astre
+	"""
 	rotation.y += deg_to_rad(vitesse_rotation)*delta
 	
 func _on_infos_astre(infos: Dictionary):

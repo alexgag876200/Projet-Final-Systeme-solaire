@@ -164,9 +164,15 @@ const DONNEES_CORPS = [
 "masse":5.0e19,"rayon":210000.0,"temps_rotation_sur_elle_meme":0.0}
 
 ]
-
-
-
+"""
+	héliocentrique pour les planètes avant Jupiter et par la suite les données sont barycentriques
+	Barycentrique: relatif au centre de gravité
+	Héliocentrique: en considérant que les planètes orbitent le soleil
+	Précision est accrue en utilisant barycentrique
+"""
+"""
+Données collecter individuellement en utilisant la base de données de la NASA
+"""
 const position_astre = [
 
 	{"nom": "Soleil",

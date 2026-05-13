@@ -1,11 +1,12 @@
 extends Node3D
 
 
-
+# array pour stocker les astres dans une base de données pour des calculs comme l'accélération, ect ...
 var autres_corps: Array[Node3D]
 
 var interface_node: Node
 
+# données qui sont cherchées dans la base de données
 var demi_grand_axe: float 
 var excentricite: float
 var inclinaison: float
@@ -21,30 +22,36 @@ var rayon: float
 var temps_rotation_sur_elle_meme: float
 var m_parent
 
+"""
+paramètres qui sont indépandant pour chaque astre, donc placer dans l'inspecteur 
+pour permettre la modification indépendante tout en gardant un script commun.
+"""
 @export_group("Paramètre de conversion simulation")
 @export var min_distance_simulee: float
 @export var max_distance_simulee: float
-var min_distance_reelle: float
-var max_distance_reelle: float
-
 @export_group("Paramètre de simulation")
 @export var etapes_calcul_par_ecran: int = 10
 
-
+# constante 
 const G: float = 6.673e-11
-
-var distance_entre_astre: Vector3
-var r_i: Vector3 = Vector3.ZERO
-var v_i: Vector3 = Vector3.ZERO
-var a_i: Vector3
-
-
 var temps_sec_mois: float= 2592000
+
+# variables utilisées pour les différents calculs
+var min_distance_reelle: float
+var max_distance_reelle: float
+"
+ Pour les vecteurs, s'assurer de fixer la valeur initial à 0 pour éviter qu'il y aurait des données invisibles qui se rajoutent à ceux-ci
+"
+var distance_entre_astre:= Vector3.ZERO
+var r_i:= Vector3.ZERO
+var v_i:= Vector3.ZERO
+var a_i:= Vector3.ZERO
+var k1:= Vector3.ZERO
+var k3:= Vector3.ZERO
+var k4:= Vector3.ZERO
+
+# Variables utilisé pour la vitesse de la simulation et les intéractions avec l'interface
 var temps_ecoule: float = 0.0
-var k1: Vector3
-var k2: Vector3
-var k3: Vector3
-var k4: Vector3
 var vitesse_simu: float = 1.0
 var periode : float
 
@@ -54,12 +61,11 @@ func conv_position_reelle_a_simulee(position_reelle : Vector3) -> Vector3:
 	de la simulation
 	
 	Paramètres:
-	position_reelle -- la position réelle à convertir
+		position_reelle: la position réelle de l'astre à convertir pour la simulation
 	
 	Retour :
-	la position dans le monde de la simulation à utiliser
-	"""
-	"""
+    	position convertie dans l’espace de la simulation
+
 	fonction is _finite est utilisé pour éviter les problématique liées au 
 	au division par 0, au valeurs trop petite et lorsqu'il y a tout simplement pas
 	de valeur pour une certaine donnée. Utilisé comme sécurité
@@ -81,6 +87,13 @@ func conv_position_reelle_a_simulee(position_reelle : Vector3) -> Vector3:
 
 
 func donnees_planetes(data: Dictionary) :
+	"""
+	prend les données dans le script données_système et fournit celles de l'astre en
+	fonction de celui-ci. Si nécessaire, pour certaines lunes calculer la vitesse au
+	périhélie et la position de celui-ci si elle n'est pas fournie dans la base de données
+	Paramètres: 
+		data : dictionnaire contenant les données des astres
+	"""
 	demi_grand_axe = data["demi_grand_axe"]
 	excentricite = data["excentricite"]
 	inclinaison = data["inclinaison"]
@@ -107,7 +120,13 @@ func donnees_planetes(data: Dictionary) :
 		vitesse_perihelie = sqrt(G * m_parent * (1.0 + excentricite) / perihelie)
 
 func assignation_donnees_planete() -> void:
+	"""
+	La fonction va être utilisée avec la fonction données_planètes pour venir isoler 
+	et donner les bonnes valeurs à chaques astres en allant rechercher les données associées
+	au nom de l'astre dans la base de données
 	
+	
+	"""
 	for corps in donnees.DONNEES_CORPS:
 		if corps["nom"] == self.name:
 			
@@ -116,16 +135,30 @@ func assignation_donnees_planete() -> void:
 
 
 func acceleration(position_reelle: Vector3) -> Vector3:
+	"""
+	Effectue le calcul de l'intéraction gravitationnelle entre les astres en utilisant
+	la deuxième loi de Isaac Newton
+	Passer tous les astres de l'array les uns après les autres et effectuer la somme des
+	vecteurs d'accélération
+	Ignore l'astre lui-même car il n'intéragie pas avec lui même pour le calcul d'accélération
+	Retourne :
+		l'intéraction gravitationelle spécifique à l'astre en question
+	Paramètres:
+		a: accélération totale du système
+		r_ij: distance vectorielle
+		dist: distance linéaire
+		Position_reelle: position de l'astre 
+	"""
 	var a :Vector3 = Vector3.ZERO
-
+	
 	for corps in autres_corps:
-		#évite de calculé l'accélération avec le corps lui même
+		#évite de calculer l'accélération avec le corps lui même
 		if corps == self:
 			continue
 		
 		var r_ij = corps.r_i - position_reelle
 		var dist = r_ij.length()
-		if dist < 1.0:   # ← sécurité anti division par zéro
+		if dist < 1.0:   # sécurité anti division par zéro
 			continue
 		
 		a += G * corps.masse * r_ij / (dist **3)
@@ -133,17 +166,43 @@ func acceleration(position_reelle: Vector3) -> Vector3:
 	return a
 
 func initialiser_position_et_vitesse() -> void:
+	"""
+	À partir des données selectionnées pour une date en particulier, isoler la position
+	et la vitesse de chaque astre
+
+	Paramètres:
+		r_i: vecteur de la position initiale
+		v_i: vitesse à la position initiale
+		
+	La position initiale est simplement le moment où est-ce qu'on commence la simulation
+	Date choisi: 11 septembre 2001
+	"""
 	for data in donnees.position_astre:
 		if data["nom"] == self.name:
 			r_i = data["position"]
 			v_i = data["vitesse"]
 			return
 func changement_vitesse_lunes() -> void:
-	if identifiaction_lunes() == true:
+	"""
+	La fonction accélère le déplacement des lunes en se fiant sur si elle font partie de la liste les contenant 
+	dans la base de données (fonction identification_lunes )
+	
+	Retourne:
+		temps_sec_mois: temps en secondes équivalent à un mois accéléré par 50 en comparaison avec les planètes 
+	"""
+	if identification_lunes() == true:
 		temps_sec_mois = temps_sec_mois * 50.0
 		return
 
-func identifiaction_lunes():
+func identification_lunes():
+	"""
+	Fonction identifiant si le nom de l'astre fait partie de la base de donnée contenant le nom des différentes 
+	lunes choisi pour la simulation
+	
+	Retourne :
+		True : si l'astre est une lune
+		False: si l'astre n'est pas une lune
+	"""
 	for data in donnees.noms_lunes:
 		if data["nom"] == self.name:
 			return true
@@ -154,6 +213,26 @@ func _on_interface_slider_changed(value: float) -> void:
 	vitesse_simu = value
 
 func runge_kotta(temps_dernier_ecran):
+	"""
+	Fonction utilisant la méthode de Runge-kotta de quatrième degré pour calculer 
+	la position suivante de l'astre et la vitesse de celui-ci à la 
+	nouvelle position établi
+	Cette méthode effectue quatre estimations successives de la dérivée
+    (position et vitesse) afin d’obtenir une intégration plus précise du mouvement
+    qu’avec une méthode simple comme Euler. Diminution de l'erreur de calcul et 
+	permet une simulation bien plus précise qu'avec Euler bien qu'il y est quand même 
+	de l'erreur qui fini par s'accumuler
+	
+	Paramètres :
+		temps_dernier_ecran: temps simulé écoulé depuis la dernière frame
+		k1 = dérivée au début du pas
+		k2 = dérivée au milieu du pas (en avançant avec k1)
+		k3 = dérivée au milieu du pas (en avançant avec k2)
+		k4 = dérivée à la fin du pas (en avançant avec k3)
+		r_i : La nouvelle position de l'astre
+		v_i : la vitesse de l'astre à sa nouvelle position
+	"""
+	
 		#Nombre de période à simuler dans l'écran
 	var dt = temps_dernier_ecran / float(etapes_calcul_par_ecran)
 		
@@ -181,6 +260,14 @@ func runge_kotta(temps_dernier_ecran):
 
 
 func _ready() -> void:
+	"""
+	essentiel pour la rotation de neptune, sinon le slider fait buger la lune
+	lorsque le slider va au dessus de 45 mois/seconde, Mercure se retrouve à s'arrèter soudainement
+	Appel de toutes les fonctions essentiel à l'initialisation de la simulation
+	"""
+	interface_node = get_tree().get_first_node_in_group("interface")
+	if interface_node:
+		interface_node.connect("slider_changed", Callable(self, "_on_interface_slider_changed"))
 	autres_corps = []
 	for n in get_tree().get_nodes_in_group("corps"):
 		if n is Node3D:
@@ -201,9 +288,17 @@ func _ready() -> void:
 			break
 	
 func _process(delta: float) -> void:
+	"""
+	Appelle des fonctions à chaque delta pour simuler le déplacement des astres 
+	dans la simulation
+	"""
 	runge_kotta(delta * temps_sec_mois * vitesse_simu)
+	# position en fonction du parent de l'astre (soleil ou planète spécifique)
 	if parent_node != null:
 		global_position = parent_node.global_position + conv_position_reelle_a_simulee(r_i)
+	# calcul de la position si l'astre n'a pas de parent (soleil)
+	else:
+		global_position = conv_position_reelle_a_simulee(r_i)
 
 
 func _enter_tree():
