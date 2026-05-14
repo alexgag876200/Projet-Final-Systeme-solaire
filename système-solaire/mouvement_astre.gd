@@ -275,6 +275,8 @@ func _ready() -> void:
 	Appel de toutes les fonctions essentiel à l'initialisation de la simulation
 	"""
 	interface_node = get_tree().get_first_node_in_group("interface")
+	if interface_node:
+		interface_node.connect("slider_changed", Callable(self, "_on_interface_slider_changed"))
 	autres_corps = []
 	for n in get_tree().get_nodes_in_group("corps"):
 		if n is Node3D:

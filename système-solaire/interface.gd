@@ -66,7 +66,7 @@ func format_scientifique(valeur: float) -> String:
 
 	Retour :
 		Représentation en notation scientifique.
-    """
+	"""
 	if valeur == 0.0:
 		return "0.000e0"
 	var signe = "-" if valeur < 0 else ""
