@@ -5,14 +5,17 @@ extends Camera3D
 
 
 
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	"""
+	Gère les déplacements et rotations de la caméra à chaque frame.
+	
+	Paramètres :
+		Temps écoulé depuis la dernière frame, utilisé pour un mouvement fluide.
+	
+	Retour :
+		Aucun.
+	"""
 	var direction := Vector3.ZERO
 	
 	#Direction WASD
@@ -41,6 +44,16 @@ func _process(delta: float) -> void:
 		rotate_object_local(Vector3.RIGHT, deg_to_rad(Vitesse_rotation * delta))
 
 func _input(event: InputEvent) -> void:
+	"""
+	Détecte les clics de souris et effectue un raycast pour identifier
+	quel astre a été sélectionné par l'utilisateur.
+	
+	Paramètres :
+		Événement d'entrée détecté(clic)
+
+	Retour :
+		Aucun.
+	"""
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		print("=== CLIC DÉTECTÉ ===")
 		

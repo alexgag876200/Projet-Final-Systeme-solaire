@@ -210,6 +210,15 @@ func identification_lunes():
 
 
 func _on_interface_slider_changed(value: float) -> void:
+	"""
+	Callback appelé lorsque l’interface modifie la vitesse de simulation.
+
+	Paramètres :
+		Nouvelle valeur du slider envoyée par l’interface.
+	
+	Retour :
+		Aucun.
+	"""
 	vitesse_simu = value
 
 func runge_kotta(temps_dernier_ecran):
@@ -266,8 +275,6 @@ func _ready() -> void:
 	Appel de toutes les fonctions essentiel à l'initialisation de la simulation
 	"""
 	interface_node = get_tree().get_first_node_in_group("interface")
-	if interface_node:
-		interface_node.connect("slider_changed", Callable(self, "_on_interface_slider_changed"))
 	autres_corps = []
 	for n in get_tree().get_nodes_in_group("corps"):
 		if n is Node3D:
@@ -300,15 +307,27 @@ func _process(delta: float) -> void:
 	else:
 		global_position = conv_position_reelle_a_simulee(r_i)
 
-
-func _enter_tree():
-	add_to_group("corps")
-	
 signal Donnee_Astre(info)
 @warning_ignore("unused_signal")
 
+func _enter_tree():
+	"""
+	Ajoute l’astre au groupe 'corps' dès qu’il entre dans l’arbre de scène.
+	
+	Retour :
+		Aucun.
+	"""
+	add_to_group("corps")
+
 
 func emettre_donnees():
+	"""
+	Émet un signal contenant toutes les informations physiques et orbitales
+	de l’astre, utilisé par l’interface lors d’un clic de l’utilisateur.
+
+	Retour :
+		Aucun.
+	"""
 	Donnee_Astre.emit({
 		"nom":                          name,
 		"demi_grand_axe":               demi_grand_axe,
@@ -324,7 +343,3 @@ func emettre_donnees():
 		"temps_rotation_sur_elle_meme": temps_rotation_sur_elle_meme,
 		"parent":                       parent_nom
 	})	
-
-
-func _on_camera_3d_property_list_changed() -> void:
-	pass # Replace with function body.
